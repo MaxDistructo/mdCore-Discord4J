@@ -13,7 +13,7 @@ public class Perms {
         long[] moderators = Config.readServerModConfig(message.getGuild());
         int i = 0;
         while(i < moderators.length){
-            if(author.getLongID() == moderators[i] || author == message.getGuild().getOwner() || author == client.getApplicationOwner() || checkAdmin(message) || author.getLongID() == 374517920505790464L){
+            if(author.getLongID() == moderators[i] || checkAdmin(message) ||  checkOwner_Guild(message){
                 return true;
             }
             i++;
@@ -27,7 +27,7 @@ public class Perms {
         long[] admins = Config.readServerAdminConfig(message.getGuild());
         int i = 0;
         while(i < admins.length){
-            if(author.getLongID() == admins[i] || author == message.getGuild().getOwner() || author == client.getApplicationOwner()|| author.getLongID() == 374517920505790464L){
+            if(author.getLongID() == admins[i] || checkOwner_Guild(message){
                 return true;
             }
             i++;
@@ -38,7 +38,7 @@ public class Perms {
     public static boolean checkOwner_Guild(IMessage message){
         IUser author = message.getAuthor();
 
-        return author.getLongID() == client.getApplicationOwner().getLongID() || author.getLongID() == message.getGuild().getOwnerLongID()|| author.getLongID() == 374517920505790464L;
+        return author.getLongID() == author.getLongID() == message.getGuild().getOwnerLongID()|| checkOwner(message);
     }
     public static boolean checkOwner(IMessage message){
        IUser author = message.getAuthor();
