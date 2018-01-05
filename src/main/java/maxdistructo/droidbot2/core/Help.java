@@ -12,7 +12,15 @@ String[] commands = Utils.toStringArray(commandsJSON);
 StringBuilder helpCommandBuilder = new StringBuilder();
 int i = 0;
 while(i < commands.length){
-helpCommandBuilder.append(commands[i] + ": " + commandsObject.getJSONArray(commands[i]).getString("disc") + " Mod Only: " + commandsObject.getJSONArray(commands[i]).getBoolean("moderator") + "\n");
+
+if(commandsObject.getJSONArray(commands[i]).getBoolean("moderator") && Perms.checkMod(message)){
+helpCommandBuilder.append(commands[i] + ": " + commandsObject.getJSONArray(commands[i]).getString("disc") + "\n");
+}
+else if(commandsObject.getJSONArray(commands[i].getBoolean("moderator") && !Perms.checkMod(message){
+}
+else(!commandsObject.getJSONArray(commands[i].getBoolean("moderator") && !Perms.checkMod(message)){
+helpCommandBuilder.append(commands[i] + ": " + commandsObject.getJSONArray(commands[i]).getString("disc") + "\n");
+}
 i++;
 }
 return helpCommandBuilder.toString();
