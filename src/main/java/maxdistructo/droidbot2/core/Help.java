@@ -12,7 +12,7 @@ String[] commands = Utils.toStringArray(commandsJSON);
 StringBuilder helpCommandBuilder = new StringBuilder();
 int i = 0;
 while(i < commands.length){
-helpCommandBuilder.append(commands[i] + " " + commandsObject.getJSONArray(commands[i]).getString("disc") + "\n");
+helpCommandBuilder.append(commands[i] + ": " + commandsObject.getJSONArray(commands[i]).getString("disc") + "\n");
 i++;
 }
 return helpCommandBuilder.toString();
