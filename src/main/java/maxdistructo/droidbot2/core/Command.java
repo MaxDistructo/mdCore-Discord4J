@@ -1,5 +1,9 @@
 package maxdistructo.droidbot2.core
 
+import org.json.*;
+import sx.blah.discord.handle.obj.*;
+import maxdistructo.droidbot2.core.message.Message;  
+
 public class Command{
 
 public static boolean isEnabled(String commandName, IGuild guild){
