@@ -16,6 +16,7 @@ return command.getBoolean("enabled");
 }
 catch(Exception e){
 Message.sendError(e);
+return true;
 }
 
 }
@@ -30,6 +31,7 @@ return command.getBoolean("moderator");
 }
 catch(Exception e){
 Message.sendError(e);
+  return true;
 }
 
 }
