@@ -38,7 +38,7 @@ public class Perms {
     public static boolean checkOwner_Guild(IMessage message){
         IUser author = message.getAuthor();
 
-        return author.getLongID() == author.getLongID() == message.getGuild().getOwnerLongID()|| checkOwner(message);
+        return author.getLongID() == message.getGuild().getOwnerLongID()|| checkOwner(message);
     }
     public static boolean checkOwner(IMessage message){
        IUser author = message.getAuthor();
