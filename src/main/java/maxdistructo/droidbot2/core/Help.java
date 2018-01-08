@@ -1,4 +1,4 @@
-package maxdistructo.droidbot2.core
+package maxdistructo.droidbot2.core;
 
 import sx.blah.discord.handle.obj.*;
 import org.json.*;
@@ -20,7 +20,7 @@ while(i < commands.length){
 if(commandsObject.getJSONArray(commands[i]).getBoolean("moderator") && Perms.checkMod(message)){
 helpCommandBuilder.append(commands[i] + ": " + commandsObject.getJSONArray(commands[i]).getString("disc") + "\n");
 }
-else if(commandsObject.getJSONArray(commands[i].getBoolean("moderator") && !Perms.checkMod(message){
+else if(commandsObject.getJSONArray(commands[i].getBoolean("moderator") && !Perms.checkMod(message)){
 }
 else(!commandsObject.getJSONArray(commands[i].getBoolean("moderator") && !Perms.checkMod(message)){
 helpCommandBuilder.append(commands[i] + ": " + commandsObject.getJSONArray(commands[i]).getString("disc") + "\n");
