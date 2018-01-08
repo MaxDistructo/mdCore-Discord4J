@@ -1,4 +1,4 @@
-package maxdistructo.droidbot2.core
+package maxdistructo.droidbot2.core;
 
 import org.json.*;
 import sx.blah.discord.handle.obj.*;
