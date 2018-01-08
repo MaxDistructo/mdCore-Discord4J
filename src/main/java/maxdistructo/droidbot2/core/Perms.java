@@ -13,7 +13,7 @@ public class Perms {
         long[] moderators = Config.readServerModConfig(message.getGuild());
         int i = 0;
         while(i < moderators.length){
-            if(author.getLongID() == moderators[i] || checkAdmin(message) ||  checkOwner_Guild(message){
+            if(author.getLongID() == moderators[i] || checkAdmin(message) ||  checkOwner_Guild(message)){
                 return true;
             }
             i++;
@@ -27,7 +27,7 @@ public class Perms {
         long[] admins = Config.readServerAdminConfig(message.getGuild());
         int i = 0;
         while(i < admins.length){
-            if(author.getLongID() == admins[i] || checkOwner_Guild(message){
+            if(author.getLongID() == admins[i] || checkOwner_Guild(message)){
                 return true;
             }
             i++;
