@@ -20,7 +20,7 @@ while(i < commands.length){
 if(commandsObject.getJSONArray(commands[i]).getBoolean("moderator") && Perms.checkMod(message)){
 helpCommandBuilder.append(commands[i] + ": " + commandsObject.getJSONArray(commands[i]).getString("disc") + "\n");
 }
-else(!commandsObject.getJSONArray(commands[i].getBoolean("moderator") && !Perms.checkMod(message)){
+else(!commandsObject.getJSONArray(commands[i]).getBoolean("moderator") && !Perms.checkMod(message)){
 helpCommandBuilder.append(commands[i] + ": " + commandsObject.getJSONArray(commands[i]).getString("disc") + "\n");
 }
 i++;
