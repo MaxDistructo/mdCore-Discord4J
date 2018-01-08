@@ -1,6 +1,21 @@
 package maxdistructo.droidbot2.core
 
-public class Command{
+class Command{
+boolean enabled, moderator;
+String desc;
+}
+
+public Command(){
+this.enabled = false;
+this.moderator = false;
+this.desc = "";
+}
+
+public Command(boolean enabled, boolean moderator, String description){
+this.enabled = enabled;
+this.moderator = moderator;
+this.desc = description;
+}
 
 public static boolean isEnabled(String commandName, IGuild guild){
 
