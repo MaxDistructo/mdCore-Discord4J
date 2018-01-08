@@ -1,5 +1,9 @@
 package maxdistructo.droidbot2.core
 
+import sx.blah.discord.handle.obj.*;
+import org.json.*;
+import java.lang.StringBuilder;
+
 public class Help{
 
 public static String helpCommand(IMessage message){
