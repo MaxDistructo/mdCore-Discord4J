@@ -96,11 +96,20 @@ public class Message {
         }
 
 }
+    @Depreciated //Use #Message.throwError(Exception e, IMessage message); or #Message.throwError(Exception e);
     public static void sendError(Exception e){
         sendDM(Client.client.getApplicationOwner(), e.toString() + "\n" + Arrays.toString(e.getStackTrace())); //General Support
         sendDM(Client.client.getUserByID(374517920505790464L), e.toString() + "\n" + Arrays.toString(e.getStackTrace())); //Secondary Account Support
-
-
+    }
+    
+    public static void throwError(Exception e){
+        sendDM(Client.client.getApplicationOwner(), e.toString() + "\n" + Arrays.toString(e.getStackTrace())); //General Support
+        sendDM(Client.client.getUserByID(374517920505790464L), e.toString() + "\n" + Arrays.toString(e.getStackTrace())); //Secondary Account Support
+    }
+    
+     public static void throwError(Exception e, IMessage message){
+        sendDM(Client.client.getApplicationOwner(), message.getGuild().getName() + "'s #" + message.getChannel().getName() + " has thrown " + e.toString() + "\n" + Arrays.toString(e.getStackTrace())); //General Support
+        sendDM(Client.client.getUserByID(374517920505790464L), message.getGuild().getName() + "'s #" + message.getChannel().getName() + " has thrown " + e.toString() + "\n" + Arrays.toString(e.getStackTrace())); //Secondary Account Support
     }
 
 }
