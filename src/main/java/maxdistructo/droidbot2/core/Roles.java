@@ -178,5 +178,12 @@ public class Roles {
             }
             role.changeColor(hex);
         }
+        public static void makeNewRole(IGuild guild, String roleName, boolean hoist, boolean mentionable){
+            RoleBuilder rb = new RoleBuilder(guild);
+            rb.withName(roleName);
+            rb.setHoist(hoist);
+            rb.setMentionable(mentionable);
+            rb.build();
+        }
     }
 
