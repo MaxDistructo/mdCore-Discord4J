@@ -76,6 +76,32 @@ public class Utils {
     }
     return arr;
 }
+    public static IChannel getMentionedChannel(IMessage message){
+        
+        List<IChannel> mentionedChannelList = message.getChannelMentions();
+            Object[] mentionedChannelArray = mentionedChannelList.toArray();
+            IChannel channelMention;
+            if (mentionedChannelArray.length > 0) {
+                channelMention = (IChannel) mentionedChannelArray[0];
+            } else {
+                channelMention = null;
+            }
+        return channelMention;
+    }
+    
+    public static IUser getMentionedUser(IMessage message){
+            
+            List<IUser> mentionedList = message.getMentions();
+            Object[] mentionedArray = mentionedList.toArray();
+            IUser mentioned;
+            if (mentionedArray.length > 0) {
+                mentioned = (IUser) mentionedArray[0];
+            } else {
+                mentioned = null;
+            }
+        return mentioned;
+    }
+    
     
 
 }
