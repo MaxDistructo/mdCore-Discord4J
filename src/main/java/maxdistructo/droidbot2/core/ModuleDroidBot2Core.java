@@ -7,15 +7,24 @@ public class ModuleDroidBot2Core implements IModule{
 	private String moduleMinimumVersion = "2.9.0";
 	private String author = "MaxDistructo";
 	public static IDiscordClient client;
-  public static EventDispatcher dispatcher;
+	public static EventDispatcher dispatcher;
+	public static String prefix;
+	public static ListenerDroidBot2Core listener = new ListenerDroidBot2Core();
 	
 	public void disable() {
 		
 	}
 
 	public boolean enable(IDiscordClient dclient) {
-		client = dclient;
+		if(maxdistructo.droidbot2.core.Client.client = null){
+			client = dclient;
+		}
+		else{
+			client = maxdistructo.droidbot2.core.Client.client;
+		}
+		prefix = Config.readPrefix();
 		dispatcher = client.getDispatcher();
+		dispatcher.registerListener(listener);
 		return true;
 	}
 
