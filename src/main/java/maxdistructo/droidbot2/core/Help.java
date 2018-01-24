@@ -7,16 +7,24 @@ public class Help {
 public static void onHelpCommand(IMessage message){
 
 String[] helpArray = Config.readHelp(); //Method will return just the array from the Config file.
-if(Perms.checkMod(message)){
-String[] modHelpArray = Config.readModHelp(); //In order to allow for mods to have seperate help for mod only commands, this must be done.
-String help1 = Utils.makeNewString(helpArray, 1);
-String help2 = Utils.makeNewString(modHelpArray, 1);
-Message.sendDM(message.getAuthor(), help1 + "\n Moderator Commands: \n" + help2);
-}
-else{
-String help = Utils.makeNewString(helpArray, 1);
-Message.sendDM(message.getAuthor(), help);
-}
+  if(Perms.checkAdmin(message)){
+    String[] modHelpArray = Config.readModHelp(); //In order to allow for mods to have seperate help for mod only commands, this must be done.
+    String[] adminHelpArray = Config.readAdminHelp();
+    String help1 = Utils.makeNewString(helpArray, 1);
+    String help2 = Utils.makeNewString(modHelpArray, 1);
+    String help3 = Utils.makeNewString(adminHelpArray, 1);
+    Message.sendDM(message.getAuthor(), help1 + "\n Moderator Commands: \n" + help2 + "\n Admin Commands: \n" + help3);
+  }
+  else if(Perms.checkMod(message)){
+    String[] modHelpArray = Config.readModHelp(); //In order to allow for mods to have seperate help for mod only commands, this must be done.
+    String help1 = Utils.makeNewString(helpArray, 1);
+    String help2 = Utils.makeNewString(modHelpArray, 1);
+    Message.sendDM(message.getAuthor(), help1 + "\n Moderator Commands: \n" + help2);
+  }
+  else{
+    String help = Utils.makeNewString(helpArray, 1);
+    Message.sendDM(message.getAuthor(), help);
+      }
 }
 
 public static void addCommand(String in){ //Call this method to add your commands to the array.
