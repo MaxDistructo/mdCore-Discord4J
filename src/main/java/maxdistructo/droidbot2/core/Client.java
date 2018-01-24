@@ -7,7 +7,7 @@ import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.util.DiscordException;
 
 public class Client {
-        public static IDiscordClient client;
+        public static IDiscordClient client = null;
         public static String prefix;
         public final static Logger LOGGER = LoggerFactory.getLogger(Client.class);
         public static void createClient(String token) { // Returns a new instance of the Discord client
