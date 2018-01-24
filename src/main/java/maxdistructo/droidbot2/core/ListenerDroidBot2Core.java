@@ -11,6 +11,9 @@ IMessage message = event.getMessage();
        IUser mentioned = Utils.getMentionedUser(message);
        String content = message.getContent();
        Object messageContent[] = content.split(" ");
+       if(messageContent(0).equals(prefix + "help")){
+       Help.onHelpCommand(message);
+       }
        
        
 
