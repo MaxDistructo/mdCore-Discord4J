@@ -27,13 +27,22 @@ String[] helpArray = Config.readHelp(); //Method will return just the array from
       }
 }
 
-public static void addCommand(String in){ //Call this method to add your commands to the array.
+  public static void addCommand(String in){ //Call this method to add your commands to the array.
 
-String[] helpArray = Config.readHelp();
-List<String> help = Arrays.asList(helpArray);
-help.add(in);
-Config.writeHelp(helpArray);
+    String[] helpArray = Config.readHelp();
+    List<String> help = Arrays.asList(helpArray);
+    help.add(in);
+    Config.writeHelp(help);
 
-}
+  }
+  
+  public static void addModCommand(String in){
+    
+    String[] modHelpArray = Config.readModHelp();
+    List<String> help = Arrays.asList(modHelpArray);
+    help.add(in);
+    Config.writeHelp(help);
+  
+  }
 
 }
