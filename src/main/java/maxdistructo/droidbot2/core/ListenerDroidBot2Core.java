@@ -1,5 +1,7 @@
 package maxdistructo.droidbot2.core;
 
+import static maxdistructo.droidbot2.core.ModuleDroidBot2Core.prefix;
+
 public class ListenerDroidBot2Core{
 
 @EventListener
