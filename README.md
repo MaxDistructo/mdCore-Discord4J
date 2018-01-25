@@ -42,3 +42,6 @@ Other examples of modules can be found in the DroidBot2-Plugins repository.
 2. You may distribute, modify, or change this code as long as #1 is still followed.
 3. This is provided AS IS.
 4. By modifying this code, you take full responsibility for anything that is changed.
+5. For anything not specified here, please follow the rules of the Creative Commons license found in the License.md
+Link to CC License https://creativecommons.org/licenses/by-nc-sa/4.0/
+
