@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/MaxDistructo/droidbot2core.svg)](https://jitpack.io/#MaxDistructo/droidbot2core)
+[![](https://jitpack.io/v/MaxDistructo/droidbot2core.svg)](https://jitpack.io/#MaxDistructo/droidbot2core) [![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 # DroidBot2Core
 
@@ -43,5 +43,4 @@ Other examples of modules can be found in the DroidBot2-Plugins repository.
 3. This is provided AS IS.
 4. By modifying this code, you take full responsibility for anything that is changed.
 5. For anything not specified here, please follow the rules of the Creative Commons license found in the License.md
-Link to CC License https://creativecommons.org/licenses/by-nc-sa/4.0/
 
