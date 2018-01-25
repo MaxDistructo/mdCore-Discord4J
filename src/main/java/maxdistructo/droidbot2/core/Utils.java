@@ -105,6 +105,19 @@ public class Utils {
         return mentioned;
     }
     
+    public static IMessage.Attachment getAttachement(IMessage message){
+    
+        List<IMessage.Attachment> attachments = null;
+        attachments = message.getAttachements();
+        return attachments.get(0);
+    }
+    
+    public static String getAttachementUrl(IMessage message){
+        List<IMessage.Attachment> attachments = null;
+        attachments = message.getAttachements();
+        return attachments.get(0).getUrl();
+    }
+    
     
 
 }
