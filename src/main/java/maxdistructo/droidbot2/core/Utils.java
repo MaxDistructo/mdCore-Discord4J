@@ -118,6 +118,22 @@ public class Utils {
         return attachments.get(0).getUrl();
     }
     
+    public static String makeNewLineString(Object[] input, int startAt){
+        StringBuilder stringBuilder = new StringBuilder();
+        int i = startAt;
+        while (i < input.length) {
+            if(i - 1 == input.length) {
+                stringBuilder.append(input[i]);
+            }
+            else{
+                stringBuilder.append(input[i]);
+                stringBuilder.append("\n");
+            }
+            i++;
+        }
+        return stringBuilder.toString();
+    }
+    
     
 
 }
