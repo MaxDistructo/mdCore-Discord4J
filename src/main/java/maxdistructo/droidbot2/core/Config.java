@@ -186,6 +186,74 @@ public static String triviaReadLine(String file, int line){
         }
         return lines;
     }
+  
+    public static String[] readModHelp(){
+    
+      Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        File file = new File(s + "/droidbot/config.txt");
+        URI uri = file.toURI();
+        JSONTokener tokener = null;
+        try {
+            tokener = new JSONTokener(uri.toURL().openStream());
+        } catch (IOException e) {
+            Message.sendDM(Client.client.getApplicationOwner(), e.toString());
+            e.printStackTrace();
+        }
+        JSONObject root = new JSONObject(tokener);
+        JSONArray jsonA rray = root.getJSONArray("modHelp");
+        String[] stringsArray = new String[jsonArray.length()];
+        for (int i = 0; i < jsonArray.length; i++) {
+          parametersArray[i] = parametersJSONArray.getString(i);
+        }
+      return stringsArray;
+   } 
+  
+  public static String[] readAdminHelp(){
+    
+      Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        File file = new File(s + "/droidbot/config.txt");
+        URI uri = file.toURI();
+        JSONTokener tokener = null;
+        try {
+            tokener = new JSONTokener(uri.toURL().openStream());
+        } catch (IOException e) {
+            Message.sendDM(Client.client.getApplicationOwner(), e.toString());
+            e.printStackTrace();
+        }
+        JSONObject root = new JSONObject(tokener);
+        JSONArray jsonA rray = root.getJSONArray("adminHelp");
+        String[] stringsArray = new String[jsonArray.length()];
+        for (int i = 0; i < jsonArray.length; i++) {
+          parametersArray[i] = parametersJSONArray.getString(i);
+        }
+      return stringsArray;
+   } 
+  
+  public static String[] readHelp(){
+    
+      Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        File file = new File(s + "/droidbot/config.txt");
+        URI uri = file.toURI();
+        JSONTokener tokener = null;
+        try {
+            tokener = new JSONTokener(uri.toURL().openStream());
+        } catch (IOException e) {
+            Message.sendDM(Client.client.getApplicationOwner(), e.toString());
+            e.printStackTrace();
+        }
+        JSONObject root = new JSONObject(tokener);
+        JSONArray jsonA rray = root.getJSONArray("help");
+        String[] stringsArray = new String[jsonArray.length()];
+        for (int i = 0; i < jsonArray.length; i++) {
+          parametersArray[i] = parametersJSONArray.getString(i);
+        }
+      return stringsArray;
+   } 
+      
+    }
 
 
 }
