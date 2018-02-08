@@ -1,6 +1,10 @@
 package maxdistructo.droidbot2.core;
 
-public class ModuleDroidBot2Core implements IModule{
+import sx.blah.discord.api.IDiscordClient;
+import sx.blah.discord.api.events.EventDispatcher;
+import sx.blah.discord.modules.IModule;
+
+public class ModuleDroidBot2Core implements IModule {
 
   private String moduleName = "DroidBot2 Core";
 	private String moduleVersion = "1.0";
@@ -16,7 +20,7 @@ public class ModuleDroidBot2Core implements IModule{
 	}
 
 	public boolean enable(IDiscordClient dclient) {
-		if(maxdistructo.droidbot2.core.Client.client = null){
+		if(maxdistructo.droidbot2.core.Client.client != null){
 			client = dclient;
 		}
 		else{
