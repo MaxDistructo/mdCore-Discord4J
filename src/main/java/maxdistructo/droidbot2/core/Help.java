@@ -1,6 +1,12 @@
 package maxdistructo.droidbot2.core;
 
 
+import maxdistructo.droidbot2.core.message.Message;
+import sx.blah.discord.handle.obj.*;
+
+import java.util.Arrays;
+import java.util.List;
+
 //All DroidBot2-Core Modules will implement into this help code. If you would like to add your own Help code to it, please create a method that adds your Commands into the help array that is read for this command.
 public class Help {
 

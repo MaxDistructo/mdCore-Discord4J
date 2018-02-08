@@ -108,13 +108,13 @@ public class Utils {
     public static IMessage.Attachment getAttachement(IMessage message){
     
         List<IMessage.Attachment> attachments = null;
-        attachments = message.getAttachements();
+        attachments = message.getAttachments();
         return attachments.get(0);
     }
     
     public static String getAttachementUrl(IMessage message){
         List<IMessage.Attachment> attachments = null;
-        attachments = message.getAttachements();
+        attachments = message.getAttachments();
         return attachments.get(0).getUrl();
     }
     

@@ -4,7 +4,7 @@ import sx.blah.discord.handle.obj.*;
 import org.json.*;
 import java.lang.StringBuilder;
 
-public class Help{
+public class Help2{
 
 public static String helpCommand(IMessage message){
 IGuild guild = message.getGuild();
