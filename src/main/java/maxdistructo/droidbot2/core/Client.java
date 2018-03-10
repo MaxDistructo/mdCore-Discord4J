@@ -10,7 +10,7 @@ public class Client {
         public static IDiscordClient client = null;
         public static String prefix;
         public final static Logger LOGGER = LoggerFactory.getLogger(Client.class);
-        public static void createClient(String token) { // Returns a new instance of the Discord client
+        public static IDiscordClient createClient(String token) { // Returns a new instance of the Discord client
         ClientBuilder clientBuilder = new ClientBuilder(); // Creates the ClientBuilder instance
         clientBuilder.withToken(token); // A to the builder
         clientBuilder.withRecommendedShardCount();      
@@ -21,7 +21,7 @@ public class Client {
             System.exit(0);
         } 
         prefix = Config.readPrefix();        
-
+        return client;
     }
     public static void registerListener(Object listener){
             client.getDispatcher().registerListener(listener);

@@ -19,27 +19,7 @@ import java.util.Scanner;
 
 public class Config{
 
-  @SuppressWarnings("resource") @Deprecated //Unused method cause trivia is on backburner for me.
-public static String triviaReadLine(String file, int line){
-      Scanner input = null;
-      Path currentRelativePath = Paths.get("");
-      String s = currentRelativePath.toAbsolutePath().toString();
-      try {
-          input = new Scanner(new FileReader(s + "/droidbot/config/trivia/" + file + ".txt"));
-      } catch (FileNotFoundException e) {
-          Message.sendDM(Client.client.getApplicationOwner(), e.toString());
-          e.printStackTrace();
-      }
-      int i = 0;
-      while(input.hasNextLine()){
-          if(i == line) {
-              return input.next();
-          }
-          i++;
-      }
-      return "Is this bot broken?`yes";
-  }
-  @Deprecated //Use Utils.convertToInt instead. Method still exists for legacy support
+  @Deprecated //Use Utils.convertToInt instead. Method still exists for legacy support *WILL BE REMOVED IN v1.10 SO STOP USING THIS*
    public static int converToInt(Object in){
        return Integer.valueOf(in.toString());
    }

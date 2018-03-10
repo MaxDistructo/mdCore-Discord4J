@@ -9,6 +9,7 @@ import sx.blah.discord.util.*;
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
@@ -40,7 +41,7 @@ public class Message {
         //builder.withDesc("withDesc");
         builder.withDescription(description);
         builder.withTitle(title);
-        builder.withTimestamp(LocalDateTime.now());
+        builder.withTimestamp(Instant.now());
        // builder.withUrl("http://i.imgur.com/IrEVKQq.png");
        // builder.withImage("http://i.imgur.com/agsp5Re.png");
 
