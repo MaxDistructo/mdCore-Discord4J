@@ -253,25 +253,7 @@ public class Config{
         root.put("help", help);
   }
 
-  public static JSONObject readJSONFromFile(String fileName){
 
-      File file = new File(s + fileName);
-
-      URI uri = file.toURI();
-      JSONTokener tokener = null;
-      try {
-          tokener = new JSONTokener(uri.toURL().openStream());
-      } catch (IOException e) {
-          Message.sendDM(Client.client.getApplicationOwner(), e.toString());
-          e.printStackTrace();
-      }
-      if(tokener != null) {
-          return new JSONObject(tokener);
-      }
-      else{
-          throw new NullPointerException();
-      }
-  }
       
     }
 
