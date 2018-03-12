@@ -17,6 +17,8 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
 
+import static maxdistructo.droidbot2.core.Utils.s;
+
 public class Config{
 
   @Deprecated //Use Utils.convertToInt instead. Method still exists for legacy support *WILL BE REMOVED IN v1.10 SO STOP USING THIS*
@@ -249,6 +251,26 @@ public class Config{
         JSONObject root = new JSONObject(tokener);
         String[] help = in.toArray(new String[in.size()]);
         root.put("help", help);
+  }
+
+  public static JSONObject readJSONFromFile(String fileName){
+
+      File file = new File(s + fileName);
+
+      URI uri = file.toURI();
+      JSONTokener tokener = null;
+      try {
+          tokener = new JSONTokener(uri.toURL().openStream());
+      } catch (IOException e) {
+          Message.sendDM(Client.client.getApplicationOwner(), e.toString());
+          e.printStackTrace();
+      }
+      if(tokener != null) {
+          return new JSONObject(tokener);
+      }
+      else{
+          throw new NullPointerException();
+      }
   }
       
     }

@@ -6,7 +6,7 @@
 
     <groupId>maxdistructo.droidbot2</groupId>
     <artifactId>core</artifactId>
-    <version>v1.10</version>
+    <version>v1.0.10</version>
 
     <properties>
         <java.version>1.8</java.version>
