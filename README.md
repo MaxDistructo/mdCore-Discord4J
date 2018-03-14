@@ -1,12 +1,12 @@
 [![](https://jitpack.io/v/MaxDistructo/droidbot2core.svg)](https://jitpack.io/#MaxDistructo/droidbot2core) [![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-# DroidBot2Core
+# mdCore-Discord4J
 
-This is a core library for droidbot2 and can be used with any Discord4J bot instance
+This is a core library for my discord bots and can be used with any Discord4J bot instance
 
 # Modules:
 
-All modules that use DroidBot2-Core must implement the following methods:
+All modules that use mdCore-Discord4J must implement the following methods:
 
 1. A Help Section that integrates into the Help.java class(Unreleased. Will be released soon.) through the use of
 ```java
@@ -16,7 +16,7 @@ Help.addAdminCommand(); //Same as above but for Admin+ commands.
 ```
 Or by directly adding your Help Command into the JSONArray read by the Config.readHelp(), Config.readModHelp(), and Config.readAdminHelp().
 
-2. Contains the following statement in your module enable section. An example of this is below. This code will make sure that DroidBot2-Core is in the class path and that you have access to the prefix for your commands to follow.
+2. Contains the following statement in your module enable section. An example of this is below. This code will make sure that mdCore-Discord4J is in the class path and that you have access to the prefix for your commands to follow.
 ```java
 public boolean enable(IDiscordClient dclient) {
 		try {
@@ -44,3 +44,7 @@ Other examples of modules can be found in the DroidBot2-Plugins repository.
 4. By modifying this code, you take full responsibility for anything that is changed.
 5. For anything not specified here, please follow the rules of the Creative Commons license found in the License.md
 
+## Note
+
+1. This code is in beta and can not be expected to work perfectly with all versions of Discord4J. Requires: Discord4Jv10.0+
+2. Classpath rework is comming very soon and will screw up all code written before the rework.
