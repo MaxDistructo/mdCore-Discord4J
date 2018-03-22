@@ -91,7 +91,7 @@ object Utils {
         return channelMention
     }
 
-    fun getMentionedUser(message: IMessage): IUser? {
+    fun getMentionedUser(message: IMessage): IUser {
 
         val mentionedList = message.mentions
         val mentionedArray = mentionedList.toTypedArray()
@@ -101,7 +101,7 @@ object Utils {
         } else {
             mentioned = null
         }
-        return mentioned
+        return mentioned!!
     }
 
     fun getAttachement(message: IMessage): IMessage.Attachment {
