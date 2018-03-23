@@ -82,13 +82,11 @@ object Utils {
 
         val mentionedChannelList = message.channelMentions
         val mentionedChannelArray = mentionedChannelList.toTypedArray()
-        val channelMention: IChannel?
-        if (mentionedChannelArray.size > 0) {
-            channelMention = mentionedChannelArray[0]
+        return if (mentionedChannelArray.isNotEmpty()) {
+            mentionedChannelArray[0]
         } else {
-            channelMention = null
+            null
         }
-        return channelMention
     }
 
     fun getMentionedUser(message: IMessage): IUser {
