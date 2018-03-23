@@ -15,35 +15,6 @@ object Utils {
     private val currentRelativePath = Paths.get("")
     val s = currentRelativePath.toAbsolutePath().toString()
 
-    fun restartApplication() {
-        val javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java"
-        var currentJar: File? = null
-        try {
-            currentJar = File(Utils::class.java!!.getProtectionDomain().getCodeSource().getLocation().toURI())
-        } catch (e: URISyntaxException) {
-            e.printStackTrace()
-        }
-
-        /* is it a jar file? */
-        if (!currentJar!!.name.endsWith(".jar"))
-            return
-
-        /* Build command: java -jar application.jar */
-        val command = ArrayList<String>()
-        command.add(javaBin)
-        command.add("-jar")
-        command.add(currentJar.path)
-
-        val builder = ProcessBuilder(command)
-        try {
-            builder.start()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-
-        System.exit(0)
-    }
-
     fun makeNewString(input: Array<Any>, startAt: Int): String {
         val stringBuilder = StringBuilder()
         var i = startAt
@@ -89,7 +60,7 @@ object Utils {
         }
     }
 
-    fun getMentionedUser(message: IMessage): IUser {
+    fun getMentionedUser(message: IMessage): IUser? {
 
         val mentionedList = message.mentions
         val mentionedArray = mentionedList.toTypedArray()
@@ -99,10 +70,10 @@ object Utils {
         } else {
             mentioned = null
         }
-        return mentioned!!
+        return mentioned
     }
 
-    fun getAttachement(message: IMessage): IMessage.Attachment {
+    fun getAttachement(message: IMessage): IMessage.Attachment? {
 
         var attachments: List<IMessage.Attachment>? = null
         attachments = message.attachments
