@@ -96,8 +96,8 @@ object Utils {
         val mentionedList = message.mentions
         val mentionedArray = mentionedList.toTypedArray()
         val mentioned: IUser?
-        if (mentionedArray.size > 0) {
-            mentioned = mentionedArray[0]
+        if (mentionedArray.isNotEmpty()) {
+            mentioned = mentionedList[0]
         } else {
             mentioned = null
         }
