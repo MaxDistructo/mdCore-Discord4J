@@ -14,7 +14,6 @@ object Utils {
 
     private val currentRelativePath = Paths.get("")
     val s = currentRelativePath.toAbsolutePath().toString()
-
     fun makeNewString(input: Array<Any>, startAt: Int): String {
         val stringBuilder = StringBuilder()
         var i = startAt
@@ -61,7 +60,6 @@ object Utils {
     }
 
     fun getMentionedUser(message: IMessage): IUser? {
-
         val mentionedList = message.mentions
         val mentionedArray = mentionedList.toTypedArray()
         val mentioned: IUser?
@@ -74,7 +72,6 @@ object Utils {
     }
 
     fun getAttachement(message: IMessage): IMessage.Attachment? {
-
         var attachments: List<IMessage.Attachment>? = null
         attachments = message.attachments
         return attachments!![0]
