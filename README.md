@@ -4,37 +4,9 @@
 
 This is a core library for my discord bots and can be used with any Discord4J bot instance
 
-# Modules:
+You must credit me as the author of this code if you modify any of it or distribute it as a part of your Module/Discord Bot
 
-All modules that use mdCore-Discord4J must implement the following methods:
-
-1. A Help Section that integrates into the Help.java class(Unreleased. Will be released soon.) through the use of
-```java
-Help.addCommand(prefix + "commandName Usage: " + prefix + "commandName @User <#channel> \n This commmand is an example command");
-Help.addModCommand(); //Same as above but for Moderator+ commands.
-Help.addAdminCommand(); //Same as above but for Admin+ commands.
-```
-Or by directly adding your Help Command into the JSONArray read by the Config.readHelp(), Config.readModHelp(), and Config.readAdminHelp().
-
-2. Contains the following statement in your module enable section. An example of this is below. This code will make sure that mdCore-Discord4J is in the class path and that you have access to the prefix for your commands to follow.
-```java
-public boolean enable(IDiscordClient dclient) {
-		try {
- 			Class.forName( "maxdistructo.droidbot2.core.ModuleDroidBot2Core" ); //Checks for droidbot2-core to be in classpath
-			prefix = Utils.readPrefix(); //Require config file for prefix
-		} catch( Exception e ) {
-			e.printStackTrace();
-			return false;
-		}
-		client = dclient;
-		dispatcher = client.getDispatcher();
-		dispatcher.registerListener(new MessageHandler());
-		return true;
-	}
-```
-3. You must credit me as the author of this code if you modify any of it or distribute it as a part of your Module/Discord Bot
-
-Other examples of modules can be found in the DroidBot2-Plugins repository.
+Other examples of modules can be found in the DroidBot2-Plugins repository. (Depreciated)
 
 # License
 
