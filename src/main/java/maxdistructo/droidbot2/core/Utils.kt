@@ -1,5 +1,6 @@
 package maxdistructo.droidbot2.core
 
+import maxdistructo.droidbot2.core.Client.client
 import java.io.File
 import java.io.IOException
 import java.net.URISyntaxException
@@ -14,6 +15,7 @@ object Utils {
 
     private val currentRelativePath = Paths.get("")
     val s = currentRelativePath.toAbsolutePath().toString()
+
     fun makeNewString(input: Array<Any>, startAt: Int): String {
         val stringBuilder = StringBuilder()
         var i = startAt
@@ -65,6 +67,7 @@ object Utils {
     }
 
     fun getMentionedUser(message: IMessage): IUser? {
+
         val mentionedList = message.mentions
         val mentionedArray = mentionedList.toTypedArray()
         val mentioned: IUser?
@@ -77,6 +80,7 @@ object Utils {
     }
 
     fun getAttachement(message: IMessage): IMessage.Attachment? {
+
         var attachments: List<IMessage.Attachment>? = null
         attachments = message.attachments
         return attachments!![0]
@@ -119,18 +123,19 @@ object Utils {
         }
     }
     fun getUserFromInput(message : IMessage, input : Any) : IUser?{
-            if(getMentionedUser(message) != null){
-                return getMentionedUser(message)
-            }
-            else if(convertToLong(input) != null){
-                return message.guild.getUserByID(convertToLong(input)!!)
-            }
-            else if(message.guild.getUsersByName(input.toString()).isNotEmpty()){
-                return message.guild.getUsersByName(input.toString())[0]
-            }
-            else{
-                return  null
-            }
+        when {
+            getMentionedUser(message) != null -> return getMentionedUser(message)
+            convertToLong(input) != null -> return message.guild.getUserByID(convertToLong(input)!!)
+            message.guild.getUsersByName(input.toString()).isNotEmpty() -> return message.guild.getUsersByName(input.toString())[0]
+            else -> return  null
+        }
+    }
+    fun getUserFromInput(input : Any) : IUser?{
+        when {
+            convertToLong(input) != null -> return client!!.getUserByID(convertToLong(input)!!)
+            client!!.getUsersByName(input.toString()).isNotEmpty() -> return client!!.getUsersByName(input.toString())[0]
+            else -> return null
+        }
     }
 
 }
