@@ -29,8 +29,13 @@ object Utils {
         return stringBuilder.toString()
     }
 
-    fun convertToLong(o: Any): Long {
-        return java.lang.Long.valueOf(o.toString())
+    fun convertToLong(o: Any): Long? {
+        return try {
+            java.lang.Long.valueOf(o.toString())
+        }
+        catch(e : Exception){
+            null
+        }
     }
 
     fun convertToInt(`in`: Any): Int {
@@ -112,6 +117,20 @@ object Utils {
         } else {
             throw NullPointerException()
         }
+    }
+    fun getUserFromInput(message : IMessage, input : Any) : IUser?{
+            if(getMentionedUser(message) != null){
+                return getMentionedUser(message)
+            }
+            else if(convertToLong(input) != null){
+                return message.guild.getUserByID(convertToLong(input)!!)
+            }
+            else if(message.guild.getUsersByName(input.toString()).isNotEmpty()){
+                return message.guild.getUsersByName(input.toString())[0]
+            }
+            else{
+                return  null
+            }
     }
 
 }
