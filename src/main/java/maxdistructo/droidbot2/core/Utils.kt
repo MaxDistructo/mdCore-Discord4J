@@ -1,5 +1,6 @@
 package maxdistructo.droidbot2.core
 
+import maxdistructo.droidbot2.core.Client.client
 import java.io.File
 import java.io.IOException
 import java.net.URISyntaxException
@@ -29,8 +30,13 @@ object Utils {
         return stringBuilder.toString()
     }
 
-    fun convertToLong(o: Any): Long {
-        return java.lang.Long.valueOf(o.toString())
+    fun convertToLong(o: Any): Long? {
+        return try {
+            java.lang.Long.valueOf(o.toString())
+        }
+        catch(e : Exception){
+            null
+        }
     }
 
     fun convertToInt(`in`: Any): Int {
@@ -111,6 +117,21 @@ object Utils {
             JSONObject(tokener)
         } else {
             throw NullPointerException()
+        }
+    }
+    fun getUserFromInput(message : IMessage, input : Any) : IUser?{
+        when {
+            getMentionedUser(message) != null -> return getMentionedUser(message)
+            convertToLong(input) != null -> return message.guild.getUserByID(convertToLong(input)!!)
+            message.guild.getUsersByName(input.toString()).isNotEmpty() -> return message.guild.getUsersByName(input.toString())[0]
+            else -> return  null
+        }
+    }
+    fun getUserFromInput(input : Any) : IUser?{
+        when {
+            convertToLong(input) != null -> return client!!.getUserByID(convertToLong(input)!!)
+            client!!.getUsersByName(input.toString()).isNotEmpty() -> return client!!.getUsersByName(input.toString())[0]
+            else -> return null
         }
     }
 
