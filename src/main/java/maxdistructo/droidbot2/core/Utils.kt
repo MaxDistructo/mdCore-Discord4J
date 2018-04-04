@@ -123,14 +123,14 @@ object Utils {
         when {
             getMentionedUser(message) != null -> return getMentionedUser(message)
             convertToLong(input) != null -> return message.guild.getUserByID(convertToLong(input)!!)
-            message.guild.getUsersByName(input.toString()).isNotEmpty() -> return message.guild.getUsersByName(input.toString())[0]
+            message.guild.getUsersByName(input.toString()).isNotEmpty() -> return message.guild.getUsersByName(input.toString(), true)[0]
             else -> return  null
         }
     }
     fun getUserFromInput(input : Any) : IUser?{
         when {
             convertToLong(input) != null -> return client!!.getUserByID(convertToLong(input)!!)
-            client!!.getUsersByName(input.toString()).isNotEmpty() -> return client!!.getUsersByName(input.toString())[0]
+            client!!.getUsersByName(input.toString()).isNotEmpty() -> return client!!.getUsersByName(input.toString(), true)[0]
             else -> return null
         }
     }
