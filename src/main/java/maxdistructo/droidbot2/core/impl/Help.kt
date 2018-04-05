@@ -8,8 +8,13 @@ private val basicHelpHolder : List<String>
 private val modHelpHolder : List<String>
 private val adminHelpHolder : List<String>
 
-override val basicHelp : List<String>{
-  get() = basicHelpHolder
+override val basicHelp : String{
+  var sb = StringBuilder()
+    sb.add("Command List: \n")
+  for(line in basicHelpHolder){
+    sb.add(line + "\n")
+  }
+  get() = sb.build()
 }
 
 override val modHelp : List<String>{
