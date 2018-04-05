@@ -10,11 +10,11 @@ private val adminHelpHolder : List<String>
 
 override val basicHelp : String{
   var sb = StringBuilder()
-    sb.add("Command List: \n")
+    sb.append("Command List: \n")
   for(line in basicHelpHolder){
-    sb.add(line + "\n")
+    sb.append(line + "\n")
   }
-  get() = sb.build()
+  get() = sb.toString()
 }
 
 override val modHelp : List<String>{
