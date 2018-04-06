@@ -28,7 +28,7 @@ object Config {
     fun readToken(): String {
         val currentRelativePath = Paths.get("")
         val s = currentRelativePath.toAbsolutePath().toString()
-        val file = File("$s/droidbot/config.txt")
+        val file = File("$s/config/config.txt")
         val uri = file.toURI()
         var tokener: JSONTokener? = null
         try {
@@ -48,7 +48,7 @@ object Config {
     fun readPrefix(): String {
         val currentRelativePath = Paths.get("")
         val s = currentRelativePath.toAbsolutePath().toString()
-        val file = File("$s/droidbot/config.txt")
+        val file = File("$s/config/config.txt")
         val uri = file.toURI()
         var tokener: JSONTokener? = null
         try {
@@ -66,7 +66,7 @@ object Config {
     fun readServerModConfig(guild: IGuild): LongArray {
         val currentRelativePath = Paths.get("")
         val s = currentRelativePath.toAbsolutePath().toString()
-        val file = File(s + "/droidbot/config/" + guild.longID + ".txt")
+        val file = File(s + "/config/guild/" + guild.longID + ".txt")
         val uri = file.toURI()
         var tokener: JSONTokener? = null
         try {
@@ -95,7 +95,7 @@ object Config {
     fun readServerAdminConfig(guild: IGuild): LongArray {
         val currentRelativePath = Paths.get("")
         val s = currentRelativePath.toAbsolutePath().toString()
-        val file = File(s + "/droidbot/config/" + guild.longID + ".txt")
+        val file = File(s + "/config/guild/" + guild.longID + ".txt")
         val uri = file.toURI()
         var tokener: JSONTokener? = null
         try {
@@ -122,7 +122,7 @@ object Config {
     fun readServerGamesConfig(guild: IGuild): Array<String?> {
         val currentRelativePath = Paths.get("")
         val s = currentRelativePath.toAbsolutePath().toString()
-        val file = File(s + "/droidbot/config/" + guild.longID + ".txt")
+        val file = File(s + "/config/guild/" + guild.longID + ".txt")
         val uri = file.toURI()
         var tokener: JSONTokener? = null
         try {
@@ -149,7 +149,7 @@ object Config {
     fun readServerConfig(guild: IGuild): JSONObject {
         val currentRelativePath = Paths.get("")
         val s = currentRelativePath.toAbsolutePath().toString()
-        val file = File(s + "/droidbot/config/" + guild.longID + ".txt")
+        val file = File(s + "/config/guild/" + guild.longID + ".txt")
         val uri = file.toURI()
         var tokener: JSONTokener? = null
         try {
@@ -162,7 +162,7 @@ object Config {
         return JSONObject(tokener!!)
     }
 
-    @Deprecated("", ReplaceWith("maxdistructo.droidbot2.core.Utils.convertToLong", "maxdistructo.droidbot2.core.Utils")) //Use Utils.convertToLong instead. This is here for legacy support.
+    @Deprecated("", ReplaceWith("Utils.convertToLong(o)", "maxdistructo.droidbot2.core.Utils.convertToLong", "maxdistructo.droidbot2.core.Utils")) //Use Utils.convertToLong instead. This is here for legacy support.
     fun convertToLong(o: Any): Long {
         return java.lang.Long.valueOf(o.toString())
     }
@@ -178,96 +178,6 @@ object Config {
 
         return lines
     }
-
-    fun readModHelp(): Array<String?> {
-
-        val currentRelativePath = Paths.get("")
-        val s = currentRelativePath.toAbsolutePath().toString()
-        val file = File("$s/droidbot/config.txt")
-        val uri = file.toURI()
-        var tokener: JSONTokener? = null
-        try {
-            tokener = JSONTokener(uri.toURL().openStream())
-        } catch (e: IOException) {
-            Message.sendDM(Client.client!!.applicationOwner, e.toString())
-            e.printStackTrace()
-        }
-
-        val root = JSONObject(tokener!!)
-        val jsonArray = root.getJSONArray("modHelp")
-        val stringsArray = arrayOfNulls<String>(jsonArray.length())
-        for (i in 0 until jsonArray.length()) {
-            stringsArray[i] = jsonArray.getString(i)
-        }
-        return stringsArray
-    }
-
-    fun readAdminHelp(): Array<String?> {
-
-        val currentRelativePath = Paths.get("")
-        val s = currentRelativePath.toAbsolutePath().toString()
-        val file = File("$s/droidbot/config.txt")
-        val uri = file.toURI()
-        var tokener: JSONTokener? = null
-        try {
-            tokener = JSONTokener(uri.toURL().openStream())
-        } catch (e: IOException) {
-            Message.sendDM(Client.client!!.applicationOwner, e.toString())
-            e.printStackTrace()
-        }
-
-        val root = JSONObject(tokener!!)
-        val jsonArray = root.getJSONArray("adminHelp")
-        val stringsArray = arrayOfNulls<String>(jsonArray.length())
-        for (i in 0 until jsonArray.length()) {
-            stringsArray[i] = jsonArray.getString(i)
-        }
-        return stringsArray
-    }
-
-    fun readHelp(): Array<String?> {
-
-        val currentRelativePath = Paths.get("")
-        val s = currentRelativePath.toAbsolutePath().toString()
-        val file = File("$s/droidbot/config.txt")
-        val uri = file.toURI()
-        var tokener: JSONTokener? = null
-        try {
-            tokener = JSONTokener(uri.toURL().openStream())
-        } catch (e: IOException) {
-            Message.sendDM(Client.client!!.applicationOwner, e.toString())
-            e.printStackTrace()
-        }
-
-        val root = JSONObject(tokener!!)
-        val jsonArray = root.getJSONArray("help")
-        val stringsArray = arrayOfNulls<String>(jsonArray.length())
-        for (i in 0 until jsonArray.length()) {
-            stringsArray[i] = jsonArray.getString(i)
-        }
-        return stringsArray
-    }
-
-    fun writeHelp(`in`: List<String>) {
-
-        val currentRelativePath = Paths.get("")
-        val s = currentRelativePath.toAbsolutePath().toString()
-        val file = File("$s/droidbot/config.txt")
-        val uri = file.toURI()
-        var tokener: JSONTokener? = null
-        try {
-            tokener = JSONTokener(uri.toURL().openStream())
-        } catch (e: IOException) {
-            Message.sendDM(Client.client!!.applicationOwner, e.toString())
-            e.printStackTrace()
-        }
-
-        val root = JSONObject(tokener!!)
-        val help = `in`.toTypedArray<String>()
-        root.put("help", help)
-    }
-
-
 }
 
 

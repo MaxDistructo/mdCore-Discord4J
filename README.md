@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/MaxDistructo/droidbot2core.svg)](https://jitpack.io/#MaxDistructo/droidbot2core) [![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![](https://jitpack.io/v/MaxDistructo/mdCore-Discord4J.svg)](https://jitpack.io/#MaxDistructo/mdCore-Discord4J) [![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 # mdCore-Discord4J
 
