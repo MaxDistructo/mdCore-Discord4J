@@ -63,7 +63,7 @@ object Config {
 
     }
 
-    fun readServerModConfig(guild: IGuild): LongArray {
+    fun readServerModConfig(guild: IGuild): List<Long> {
         val currentRelativePath = Paths.get("")
         val s = currentRelativePath.toAbsolutePath().toString()
         val file = File(s + "/config/guild/" + guild.longID + ".txt")
@@ -88,11 +88,11 @@ object Config {
             i++
         }
         println("Converted JSON array to long Array")
-        return longArray
+        return longArray.toList()
 
     }
 
-    fun readServerAdminConfig(guild: IGuild): LongArray {
+    fun readServerAdminConfig(guild: IGuild): List<Long> {
         val currentRelativePath = Paths.get("")
         val s = currentRelativePath.toAbsolutePath().toString()
         val file = File(s + "/config/guild/" + guild.longID + ".txt")
@@ -115,7 +115,7 @@ object Config {
             longArray[i] = array.getLong(i)
             i++
         }
-        return longArray
+        return longArray.toList()
 
     }
 

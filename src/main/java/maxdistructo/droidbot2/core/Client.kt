@@ -6,7 +6,7 @@ import sx.blah.discord.api.ClientBuilder
 import sx.blah.discord.api.IDiscordClient
 import sx.blah.discord.util.DiscordException
 
-private object Client {
+object Client {
     var client: IDiscordClient? = null
     var prefix: String = "!"
     val LOGGER = LoggerFactory.getLogger(Client::class.java!!)

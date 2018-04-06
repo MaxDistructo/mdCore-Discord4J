@@ -2,37 +2,34 @@ package maxdistructo.droidbot2.core.impl
 
 import maxdistructo.droidbot2.core.obj.IHelp
 
-object Help() : IHelp{
+class Help : IHelp {
 
-private val basicHelpHolder : List<String>
-private val modHelpHolder : List<String>
-private val adminHelpHolder : List<String>
+    private lateinit var basicHelpHolder: MutableList<String>
+    private lateinit var modHelpHolder: MutableList<String>
+    private lateinit var adminHelpHolder: MutableList<String>
 
-override val basicHelp : String{
-  var sb = StringBuilder()
-    sb.append("Command List: \n")
-  for(line in basicHelpHolder){
-    sb.append(line + "\n")
-  }
-  get() = sb.toString()
-}
-
-override val modHelp : List<String>{
-  get() = modHelpHolder
-}
-
-override val adminHelp : List<String>{
-  get() = adminHelpHolder
-}
-
-fun addBasicHelp(help : String){
-  basicHelpHolder.add(help)
-}
-
-fun addModHelp(help : String){
-  modHelpHolder.add(help)
-}
-
-fun addAdminHelp(help : String){
-  adminHelpHolder.add(help)
+    override var adminHelp: MutableList<String>
+        get() = adminHelpHolder
+        set(value) {
+            adminHelpHolder = value
+        }
+    override var basicHelp: MutableList<String>
+        get() = basicHelpHolder
+        set(value) {
+            basicHelpHolder = value
+        }
+    override var modHelp: MutableList<String>
+        get() = modHelpHolder
+        set(value) {
+            modHelpHolder = value
+        }
+    fun addAdminHelp(input : String){
+        adminHelpHolder.add(input)
+    }
+    fun addModHelp(input : String){
+        modHelpHolder.add(input)
+    }
+    fun addHelp(input : String){
+        basicHelpHolder.add(input)
+    }
 }
