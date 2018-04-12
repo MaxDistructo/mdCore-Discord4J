@@ -79,7 +79,26 @@ class Message {
             } catch (e: RateLimitException) {
                 e.printStackTrace()
             }
-
+        }
+        fun sendDM(user: IUser, embed : EmbedObject) {
+            var pm: IPrivateChannel? = null
+            try {
+                pm = user.orCreatePMChannel
+            } catch (e: RateLimitException) {
+                e.printStackTrace()
+            } catch (e: DiscordException) {
+                e.printStackTrace()
+            }
+            try {
+                assert(pm != null)
+                pm!!.sendMessage(embed)
+            } catch (e: MissingPermissionsException) {
+                e.printStackTrace()
+            } catch (e: DiscordException) {
+                e.printStackTrace()
+            } catch (e: RateLimitException) {
+                e.printStackTrace()
+            }
         }
 
         fun react(message: IMessage, emote: IEmoji) {
