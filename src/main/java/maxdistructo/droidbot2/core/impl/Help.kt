@@ -32,4 +32,34 @@ class Help : IHelp {
     fun addHelp(input : String){
         basicHelpHolder.add(input)
     }
+    fun adminHelpString(prefix : String) : String{
+        val sb = StringBuilder()
+        for (s in basicHelpHolder){
+            sb.append(prefix + s + "\n")
+        }
+        for (s in modHelpHolder){
+            sb.append(prefix + s + "\n")
+        }
+        for (s in adminHelpHolder){
+            sb.append(prefix + s + "\n")
+        }
+        return sb.toString()
+    }
+    fun modHelpString(prefix : String) : String{
+        val sb = StringBuilder()
+        for (s in basicHelpHolder){
+            sb.append(prefix + s + "\n")
+        }
+        for (s in modHelpHolder){
+            sb.append(prefix + s + "\n")
+        }
+        return sb.toString()
+    }
+    fun helpString(prefix : String) : String{
+        val sb = StringBuilder()
+        for (s in basicHelpHolder){
+            sb.append(prefix + s + "\n")
+        }
+        return sb.toString()
+    }
 }
