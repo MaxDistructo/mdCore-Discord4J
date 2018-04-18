@@ -1,6 +1,7 @@
 package maxdistructo.droidbot2.core
 
 import maxdistructo.droidbot2.core.Client.client
+import maxdistructo.droidbot2.core.impl.Perms
 import java.io.File
 import java.io.IOException
 import java.net.URISyntaxException
@@ -12,7 +13,6 @@ import org.json.*
 import sx.blah.discord.handle.obj.*
 
 object Utils {
-
     private val currentRelativePath = Paths.get("")
     val s = currentRelativePath.toAbsolutePath().toString()
     fun makeNewString(input: Array<Any>, startAt: Int): String {

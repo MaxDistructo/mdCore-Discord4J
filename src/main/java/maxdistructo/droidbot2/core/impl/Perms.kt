@@ -7,7 +7,7 @@ import sx.blah.discord.handle.obj.IGuild
 import sx.blah.discord.handle.obj.IMessage
 import sx.blah.discord.handle.obj.IUser
 
-class Perms(guild : IGuild, bot : Bot) : IPerms {
+class Perms(guild: IGuild, bot: Bot) : IPerms {
     private var privAdmins : List<Long> = Config.readServerAdminConfig(guild)
     private var privMods : List<Long> = Config.readServerModConfig(guild)
     private var privBot : Bot = bot
