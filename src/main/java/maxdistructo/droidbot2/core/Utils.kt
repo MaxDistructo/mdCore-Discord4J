@@ -124,15 +124,24 @@ object Utils {
             getMentionedUser(message) != null -> return getMentionedUser(message)
             convertToLong(input) != null -> return message.guild.getUserByID(convertToLong(input)!!)
             message.guild.getUsersByName(input.toString()).isNotEmpty() -> return message.guild.getUsersByName(input.toString(), true)[0]
-            else -> return  null
+            else ->
+                    for(user in message.guild.users) {
+                        if (user.getDisplayName(message.guild).contains(input.toString())) {
+                            return user
+                        }
+                        else if(user.name.contains(input.toString())){
+                            return user
+                        }
+                    }
         }
+        return null
     }
     fun getUserFromInput(input : Any) : IUser?{
         when {
             convertToLong(input) != null -> return client!!.getUserByID(convertToLong(input)!!)
             client!!.getUsersByName(input.toString()).isNotEmpty() -> return client!!.getUsersByName(input.toString(), true)[0]
-            else -> return null
         }
+        return null
     }
 
 }
