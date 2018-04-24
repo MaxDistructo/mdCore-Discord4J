@@ -142,17 +142,14 @@ class Message {
         @Deprecated("Old Method.") //Use #Message.throwError(Exception e, IMessage message); or #Message.throwError(Exception e);
         fun sendError(e: Exception) {
             sendDM(Client.client!!.applicationOwner, e.toString() + "\n" + Arrays.toString(e.stackTrace)) //General Support
-            sendDM(Client.client!!.getUserByID(374517920505790464L), e.toString() + "\n" + Arrays.toString(e.stackTrace)) //Secondary Account Support
         }
 
         fun throwError(e: Exception) {
             sendDM(Client.client!!.applicationOwner, e.toString() + "\n" + Arrays.toString(e.stackTrace)) //General Support
-            sendDM(Client.client!!.getUserByID(374517920505790464L), e.toString() + "\n" + Arrays.toString(e.stackTrace)) //Secondary Account Support
         }
 
         fun throwError(e: Exception, message: IMessage) {
             sendDM(Client.client!!.applicationOwner, message.guild.name + "'s #" + message.channel.name + " has thrown " + e.toString() + "\n" + Arrays.toString(e.stackTrace)) //General Support
-            sendDM(Client.client!!.getUserByID(374517920505790464L), message.guild.name + "'s #" + message.channel.name + " has thrown " + e.toString() + "\n" + Arrays.toString(e.stackTrace)) //Secondary Account Support
         }
     }
 
