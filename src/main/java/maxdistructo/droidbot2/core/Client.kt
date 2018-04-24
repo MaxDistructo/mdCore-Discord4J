@@ -6,6 +6,7 @@ import sx.blah.discord.api.ClientBuilder
 import sx.blah.discord.api.IDiscordClient
 import sx.blah.discord.util.DiscordException
 
+@Depreciated("Use a Bot object instead!")
 object Client {
     var client: IDiscordClient? = null
     var prefix: String = "!"
