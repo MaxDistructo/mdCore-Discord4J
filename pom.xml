@@ -35,7 +35,6 @@
             <groupId>com.discord4j</groupId>
             <artifactId>Discord4J</artifactId>
             <version>${discord4j.version}</version>
-            <classifier>shaded</classifier>
             <scope>compile</scope>
         </dependency>
         <dependency>
