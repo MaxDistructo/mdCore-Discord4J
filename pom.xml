@@ -13,13 +13,6 @@
         <kotlin.version>1.2.31</kotlin.version>
         <discord4j.version>2.10.1</discord4j.version>     
     </properties>
-
-    <repositories>
-        <repository>
-           <id>jcenter</id>
-           <url>http://jcenter.bintray.com</url>
-         </repository>
-    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.json</groupId>
