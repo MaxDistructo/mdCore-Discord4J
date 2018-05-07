@@ -13,7 +13,7 @@ import maxdistructo.droidbot2.core.Utils.s
 object HTTPGet {
 
     fun from(url: URL): JSONObject { //Input get URL, output JSONObject for manipulation
-        val file = File("$s/droidbot/tmp/get.json")
+        val file = File("$s/tmp/get.json")
         file.mkdirs() //Creates new file in the directory specified, Allows for any installation to use this.
         try {
             file.createNewFile()
