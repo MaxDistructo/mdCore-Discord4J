@@ -24,7 +24,7 @@ fun avatar(channel : IChannel, name : String, avatar : String){
     .
   }
 fun getByName(channel : IChannel, name : String) : IWebhook{
-  val webhooks = Unirest.get(DiscordEndpoints.GATEWAY + "/channels/" + channel.longID + "/webhooks")
+  val webhooks = Unirest.get(DiscordEndpoints.GATEWAY + "/channels/" + channel.longID + "/webhooks").asJson().body.`object`
   
 }
     
