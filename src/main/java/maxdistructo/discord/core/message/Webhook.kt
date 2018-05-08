@@ -11,30 +11,29 @@ WARNING: This is UNTESTED and HIGHLY EXPERIMENTAL CODE!
 import com.mashape.unirest.http.Unirest
 import maxdistructo.discord.core.Utils
 import maxdistructo.discord.core.impl.Bot
-import sx.blah.discord.api.internal.DiscordClientImpl
-import sx.blah.discord.api.internal.DiscordEndpoints
-import sx.blah.discord.api.internal.json.objects.WebhookObject
+import sx.blah.discord.api.`internal`.DiscordClientImpl
+import sx.blah.discord.api.`internal`.DiscordEndpoints
+import sx.blah.discord.api.`internal`.json.objects.WebhookObject
 import sx.blah.discord.handle.impl.obj.Webhook
 import org.json.JSONArray
 import org.json.JSONObject
 import sx.blah.discord.handle.obj.*
 import sx.blah.discord.util.RequestBuffer
 
-object IWebhook{
+object Webhook{
 
-fun createWebhook(channel : IChannel, name: String, avatar : String){
-  channel.createWebhook(name, avatar)
-}
-fun name(channel : IChannel, name : String, newName : String){
-  val webhook = channel.getWebhooksByName(name) [0]
-  webhook.changeDefaultName(newName)
-}
-
-fun avatar(channel : IChannel, name : String, avatar : String){
-  val webhook = channel.getWebhooksByName(name) [0]
-  webhook.changeDefaultAvatar(avatar)
-}
-    private fun jsonBuilder(bot: Bot, oldWebhook : Webhook, message : String, name : String, avatar : String) : JSONObject{
+  fun createWebhook(channel : IChannel, name: String, avatar : String){
+    channel.createWebhook(name, avatar)
+  }
+  fun name(channel : IChannel, name : String, newName : String){
+    val webhook = channel.getWebhooksByName(name) [0]
+    webhook.changeDefaultName(newName)
+  }
+  fun avatar(channel : IChannel, name : String, avatar : String){
+    val webhook = channel.getWebhooksByName(name) [0]
+    webhook.changeDefaultAvatar(avatar)
+  }
+  private fun jsonBuilder(bot: Bot, oldWebhook : Webhook, message : String, name : String, avatar : String) : JSONObject{
       avatar(oldWebhook.channel, oldWebhook.defaultName, avatar)
       name(oldWebhook.channel, oldWebhook.defaultName, name)
       val webhook = getByName(bot, oldWebhook.channel, name)
@@ -47,7 +46,7 @@ fun avatar(channel : IChannel, name : String, avatar : String){
         out.put("id", webhook.longID)
         out.put("user", JSONObject().put("username", webhook.author.name).put("discriminator", webhook.author.discriminator).put("id", webhook.author.longID).put("avatar", webhook.author.avatar))
         return out
-    }
+  }
   private fun jsonBuilder(webhook: Webhook, message : String) : JSONObject{
         val out = JSONObject()
         out.put("name", webhook.defaultName)
@@ -64,28 +63,29 @@ fun avatar(channel : IChannel, name : String, avatar : String){
    val webhook = getByName(bot, channel, name)
    Unirest.post(DiscordEndpoints.WEBHOOKS + webhook.longID + "/" + webhook.token).body(jsonBuilder(webhook, message))
   }
-fun getByName(bot : Bot, channel : IChannel, name : String) : Webhook{
-  var webhookList = listOf<Webhook>()
-   lateinit var webhookObjects : Array<WebhookObject>
+  fun send(bot : Bot, channel : IChannel, name : String, avatar : String message : String){
+   val webhook = getByName(bot, channel, name)
+   Unirest.post(DiscordEndpoints.WEBHOOKS + webhook.longID + "/" + webhook.token).body(jsonBuilder(bot, webhook, message, name, avatar))
+  }
+  
+  fun getByName(bot : Bot, channel : IChannel, name : String) : Webhook{
+    var webhookList = listOf<Webhook>()
+    lateinit var webhookObjects : Array<WebhookObject>
     val client = bot.client as DiscordClientImpl
-  val webhooks = RequestBuffer.request {
+    val webhooks = RequestBuffer.request {
       webhookObjects = client.REQUESTS.GET.makeRequest(
-              DiscordEndpoints.CHANNELS + channel.longID + "/webhooks",
-              Array<WebhookObject>::class.java)
+      DiscordEndpoints.CHANNELS + channel.longID + "/webhooks",
+      Array<WebhookObject>::class.java)
   }
   lateinit var webhook : Webhook
-    for(value in webhookObjects){
-        webhookList += arrayOf(Webhook(bot.client, value.name, Utils.convertToLong(value.id)!!, bot.client.getChannelByID(Utils.convertToLong(value.channel_id)!!), bot.client.getUserByID(Utils.convertToLong(value.user.id)!!), value.avatar, value.token))
+      for(value in webhookObjects){
+          webhookList += arrayOf(Webhook(bot.client, value.name, Utils.convertToLong(value.id)!!, bot.client.getChannelByID(Utils.convertToLong(value.channel_id)!!), bot.client.getUserByID(Utils.convertToLong(value.user.id)!!), value.avatar, value.token))
+      }
+    for(value in webhookList){
+      if(value.defaultName == name){
+        webhook = value
+      }
     }
-  
-  for(value in webhookList){
-    if(value.defaultName == name){
-      webhook = value
-    }
-  }
     return webhook
-  
-  
-}
-    
+    }  
 }
