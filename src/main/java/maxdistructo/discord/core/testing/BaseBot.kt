@@ -5,7 +5,7 @@ lateinit var client: IDiscordClient
 lateinit var LOGGER : Logger
 
 @JvmStatic
-fun main(args : arrayOf<String>()){
+fun main(args : Array<String>()){
   bot = Bot(Config.readToken())
   client = bot.client
   LOGGER = bot.logger
