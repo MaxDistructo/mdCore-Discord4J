@@ -1,10 +1,10 @@
-package maxdistructo.droidbot2.core
+package maxdistructo.discord.core
 
 
 import sx.blah.discord.handle.obj.*
 import sx.blah.discord.util.PermissionUtils
 
-import maxdistructo.droidbot2.core.Client.client
+import maxdistructo.discord.core.Client.client
 
 object Perms {
     fun checkMod(message: IMessage): Boolean {

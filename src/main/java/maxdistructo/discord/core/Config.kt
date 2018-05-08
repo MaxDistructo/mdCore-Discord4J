@@ -1,22 +1,14 @@
-package maxdistructo.droidbot2.core
+package maxdistructo.discord.core
 
-import maxdistructo.droidbot2.core.message.Message
-import org.json.JSONArray
+import maxdistructo.discord.core.message.Message
 import org.json.JSONObject
 import org.json.JSONTokener
 import sx.blah.discord.handle.obj.IGuild
 
 import java.io.File
-import java.io.FileNotFoundException
-import java.io.FileReader
 import java.io.IOException
-import java.net.URI
 import java.nio.file.Files
-import java.nio.file.Path
 import java.nio.file.Paths
-import java.util.Scanner
-
-import maxdistructo.droidbot2.core.Utils.s
 
 object Config {
 
@@ -162,7 +154,7 @@ object Config {
         return JSONObject(tokener!!)
     }
 
-    @Deprecated("", ReplaceWith("Utils.convertToLong(o)", "maxdistructo.droidbot2.core.Utils.convertToLong", "maxdistructo.droidbot2.core.Utils")) //Use Utils.convertToLong instead. This is here for legacy support.
+    @Deprecated("", ReplaceWith("Utils.convertToLong(o)", "maxdistructo.discord.core.Utils.convertToLong", "maxdistructo.discord.core.Utils")) //Use Utils.convertToLong instead. This is here for legacy support.
     fun convertToLong(o: Any): Long {
         return java.lang.Long.valueOf(o.toString())
     }

@@ -1,6 +1,6 @@
-package maxdistructo.droidbot2.core.impl
+package maxdistructo.discord.core.impl
 
-import maxdistructo.droidbot2.core.obj.IHelp
+import maxdistructo.discord.core.obj.IHelp
 
 class Help : IHelp {
 

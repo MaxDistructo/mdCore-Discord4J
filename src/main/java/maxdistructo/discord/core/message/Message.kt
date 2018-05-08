@@ -1,16 +1,14 @@
-package maxdistructo.droidbot2.core.message
+package maxdistructo.discord.core.message
 
-import maxdistructo.droidbot2.core.Client
+import maxdistructo.discord.core.Client
 import sx.blah.discord.api.internal.json.objects.EmbedObject
 import sx.blah.discord.handle.impl.obj.ReactionEmoji
 import sx.blah.discord.handle.obj.*
 import sx.blah.discord.util.*
 
-import java.awt.*
 import java.io.File
 import java.io.FileNotFoundException
 import java.time.Instant
-import java.time.LocalDateTime
 import java.util.Arrays
 
 

@@ -1,11 +1,10 @@
-package maxdistructo.droidbot2.core
+package maxdistructo.discord.core
 
-import maxdistructo.droidbot2.core.message.Message
+import maxdistructo.discord.core.message.Message
 import sx.blah.discord.handle.obj.*
 import sx.blah.discord.util.RoleBuilder
 
 import java.awt.*
-import java.util.EnumSet
 
 object Roles {
     fun getRole(message: IMessage, role: String): IRole? {

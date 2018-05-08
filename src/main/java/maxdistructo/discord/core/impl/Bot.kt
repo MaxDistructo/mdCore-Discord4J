@@ -1,6 +1,6 @@
-package maxdistructo.droidbot2.core.impl
+package maxdistructo.discord.core.impl
 
-import maxdistructo.droidbot2.core.obj.IBot
+import maxdistructo.discord.core.obj.IBot
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import sx.blah.discord.api.ClientBuilder

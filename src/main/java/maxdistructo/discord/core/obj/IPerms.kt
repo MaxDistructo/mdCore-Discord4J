@@ -1,4 +1,4 @@
-package maxdistructo.droidbot2.core.obj
+package maxdistructo.discord.core.obj
 
 interface IPerms {
     var admins : List<Long>

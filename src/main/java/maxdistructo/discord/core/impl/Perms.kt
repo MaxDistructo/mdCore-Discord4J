@@ -1,8 +1,7 @@
-package maxdistructo.droidbot2.core.impl
+package maxdistructo.discord.core.impl
 
-import maxdistructo.droidbot2.core.Config
-import maxdistructo.droidbot2.core.impl.Bot
-import maxdistructo.droidbot2.core.obj.IPerms
+import maxdistructo.discord.core.Config
+import maxdistructo.discord.core.obj.IPerms
 import sx.blah.discord.handle.obj.IGuild
 import sx.blah.discord.handle.obj.IMessage
 import sx.blah.discord.handle.obj.IUser

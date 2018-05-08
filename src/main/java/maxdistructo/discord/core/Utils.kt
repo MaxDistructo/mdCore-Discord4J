@@ -1,14 +1,11 @@
-package maxdistructo.droidbot2.core
+package maxdistructo.discord.core
 
-import maxdistructo.droidbot2.core.Client.client
-import maxdistructo.droidbot2.core.impl.Perms
+import maxdistructo.discord.core.Client.client
 import java.io.File
 import java.io.IOException
-import java.net.URISyntaxException
 import java.nio.file.Paths
-import java.util.ArrayList
 
-import maxdistructo.droidbot2.core.message.Message
+import maxdistructo.discord.core.message.Message
 import org.json.*
 import sx.blah.discord.handle.obj.*
 
