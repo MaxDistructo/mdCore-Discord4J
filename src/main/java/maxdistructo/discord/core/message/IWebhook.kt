@@ -14,7 +14,7 @@ import maxdistructo.discord.core.impl.Bot
 import sx.blah.discord.api.internal.DiscordClientImpl
 import sx.blah.discord.api.internal.DiscordEndpoints
 import sx.blah.discord.api.internal.json.objects.WebhookObject
-import maxdistructo.discord.core.impl.Webhook
+import sx.blah.discord.handle.impl.obj.Webhook
 import org.json.JSONArray
 import org.json.JSONObject
 import sx.blah.discord.handle.obj.*
@@ -34,13 +34,35 @@ fun avatar(channel : IChannel, name : String, avatar : String){
   val webhook = channel.getWebhooksByName(name) [0]
   webhook.changeDefaultAvatar(avatar)
 }
-    fun jsonBuilder(webhook : Webhook) : JSONObject{
-        val out = JSONObject()
+    private fun jsonBuilder(bot: Bot, oldWebhook : Webhook, message : String, name : String, avatar : String) : JSONObject{
+      avatar(oldWebhook.channel, oldWebhook.defaultName, avatar)
+      name(oldWebhook.channel, oldWebhook.defaultName, name)
+      val webhook = getByName(bot, oldWebhook.channel, name)
+      val out = JSONObject()
+        out.put("name", webhook.defaultName)
+        out.put("channel_id", webhook.channel.longID)
+        out.put("token", webhook.token)
+        out.put("avatar", webhook.defaultAvatar)
+        out.put("guild_id", webhook.guild.longID)
+        out.put("id", webhook.longID)
+        out.put("user", JSONObject().put("username", webhook.author.name).put("discriminator", webhook.author.discriminator).put("id", webhook.author.longID).put("avatar", webhook.author.avatar))
         return out
     }
+  private fun jsonBuilder(webhook: Webhook, message : String) : JSONObject{
+        val out = JSONObject()
+        out.put("name", webhook.defaultName)
+        out.put("channel_id", webhook.channel.longID)
+        out.put("token", webhook.token)
+        out.put("avatar", webhook.defaultAvatar)
+        out.put("guild_id", webhook.guild.longID)
+        out.put("id", webhook.longID)
+        out.put("user", JSONObject().put("username", webhook.author.name).put("discriminator", webhook.author.discriminator).put("id", webhook.author.longID).put("avatar", webhook.author.avatar))
+         return out
+  }
+  
   fun send(bot : Bot, channel : IChannel, name : String, message : String){
    val webhook = getByName(bot, channel, name)
-   Unirest.post(DiscordEndpoints.WEBHOOKS + webhook.id + "/" + webhook.token).body(JSONArray())
+   Unirest.post(DiscordEndpoints.WEBHOOKS + webhook.longID + "/" + webhook.token).body(jsonBuilder(webhook, message))
   }
 fun getByName(bot : Bot, channel : IChannel, name : String) : Webhook{
   var webhookList = listOf<Webhook>()
