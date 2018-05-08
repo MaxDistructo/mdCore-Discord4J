@@ -16,7 +16,7 @@ val contents = event.message.content.split(" ")
 if(user == bot.client.applicationOwner){
   logger.info("Accepted Message: " + message.longID + " from " + user.name)
   logger.warn("Attempting to send webhook back in channel " + channel.name)
-  Webhook.send(bot, channel, user.name, message.content)
+  Webhook.send(bot, channel, message.content)
   logger.warn("Sent message to Discord for the webhook")
 }
 
