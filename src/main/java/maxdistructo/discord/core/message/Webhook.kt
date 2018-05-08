@@ -63,9 +63,12 @@ object Webhook{
    val webhook = getByName(bot, channel, name)
    Unirest.post(DiscordEndpoints.WEBHOOKS + webhook.longID + "/" + webhook.token).body(jsonBuilder(webhook, message))
   }
-  fun send(bot : Bot, channel : IChannel, name : String, avatar : String message : String){
+  fun send(bot : Bot, channel : IChannel, name : String, avatar : String, message : String){
    val webhook = getByName(bot, channel, name)
    Unirest.post(DiscordEndpoints.WEBHOOKS + webhook.longID + "/" + webhook.token).body(jsonBuilder(bot, webhook, message, name, avatar))
+  }
+  fun send(webhook : Webhook, message: String){
+    
   }
   
   fun getByName(bot : Bot, channel : IChannel, name : String) : Webhook{
@@ -77,7 +80,7 @@ object Webhook{
       DiscordEndpoints.CHANNELS + channel.longID + "/webhooks",
       Array<WebhookObject>::class.java)
   }
-  lateinit var webhook : Webhook
+  var webhook : Webhook? = null
       for(value in webhookObjects){
           webhookList += arrayOf(Webhook(bot.client, value.name, Utils.convertToLong(value.id)!!, bot.client.getChannelByID(Utils.convertToLong(value.channel_id)!!), bot.client.getUserByID(Utils.convertToLong(value.user.id)!!), value.avatar, value.token))
       }
@@ -86,6 +89,13 @@ object Webhook{
         webhook = value
       }
     }
+    if(webhook = null){
+      createWebhook(channel, "bot", "https://www.shareicon.net/download/128x128//2017/06/21/887435_logo_512x512.png") //Default Webhook name. Icon is Discord Logo
+      webhook = defaultWebhook(bot, channel)
+    } 
     return webhook
     }  
 }
+  fun defaultWebhook(bot : Bot, channel : IChannel) : Webhook{
+    return getByName(bot, channel, "bot")
+  }
