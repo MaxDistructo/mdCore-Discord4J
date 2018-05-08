@@ -67,6 +67,10 @@ object Webhook{
    val webhook = getByName(bot, channel, name)
    Unirest.post(DiscordEndpoints.WEBHOOKS + webhook.longID + "/" + webhook.token).body(jsonBuilder(bot, webhook, message, name, avatar))
   }
+  fun send(bot : Bot, channel : IChannel, message : String){
+   val webhook = defaultWebhook(bot, channel)
+   Unirest.post(DiscordEndpoints.WEBHOOKS + webhook.longID + "/" + webhook.token).body(jsonBuilder(webhook, message))
+  }
   fun send(webhook : Webhook, message: String){
     
   }
