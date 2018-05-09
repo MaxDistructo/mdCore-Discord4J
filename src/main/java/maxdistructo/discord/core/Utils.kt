@@ -61,7 +61,7 @@ object Utils {
     }
     
     /**
-    *   Converts the inputed @org.json.JSONArray to an Array of Strings 
+    *   Converts the inputed {@link org.json.JSONArray} to an Array of Strings 
     *   @param array The JSON array to convert to String
     *   @return The string array or null if the convert is impossible or fails
     */
