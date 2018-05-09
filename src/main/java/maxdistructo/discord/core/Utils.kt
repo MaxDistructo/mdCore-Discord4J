@@ -12,6 +12,14 @@ import sx.blah.discord.handle.obj.*
 object Utils {
     private val currentRelativePath = Paths.get("")
     val s = currentRelativePath.toAbsolutePath().toString()
+    
+    /**
+    *   Creates a new String using the provided Array and a position to start at. This start position is based on the number in the array.
+    *   Ex. To cut out the first value in an array and make it into a string, input 1 for startAt
+    *   @param input The array to draw from
+    *   @param startAt The value to start from
+    *   @return A string built off of all the values the array after the specified value.
+    */
     fun makeNewString(input: Array<Any>, startAt: Int): String {
         val stringBuilder = StringBuilder()
         var i = startAt
@@ -26,6 +34,12 @@ object Utils {
         }
         return stringBuilder.toString()
     }
+    
+    /**
+    *   Converts the input to a Long value. Returns null if the convert fails.
+    *
+    *
+    */
 
     fun convertToLong(o: Any): Long? {
         return try {
