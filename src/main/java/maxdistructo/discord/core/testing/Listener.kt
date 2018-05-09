@@ -1,7 +1,7 @@
 package maxdistructo.discord.core.testing
 
-import maxdistructo.discord.core.testing.BaseBot.bot
 import maxdistructo.discord.core.message.Webhook
+import sx.blah.discord.api.events.EventSubscriber
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent
 
 class Listener{

@@ -1,11 +1,15 @@
 package maxdistructo.discord.core.testing
 
-lateint var bot : Bot
+import maxdistructo.discord.core.Config
+import maxdistructo.discord.core.impl.Bot
+import org.slf4j.Logger
+import sx.blah.discord.api.IDiscordClient
+
+lateinit var bot : Bot
 lateinit var client: IDiscordClient
 lateinit var LOGGER : Logger
 
-@JvmStatic
-fun main(args : Array<String>()){
+fun main(args : Array<String>){
   bot = Bot(Config.readToken())
   client = bot.client
   LOGGER = bot.logger

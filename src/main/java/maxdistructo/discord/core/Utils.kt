@@ -8,6 +8,7 @@ import java.nio.file.Paths
 import maxdistructo.discord.core.message.Message
 import org.json.*
 import sx.blah.discord.handle.obj.*
+import java.io.FileWriter
 
 object Utils {
     private val currentRelativePath = Paths.get("")
@@ -98,22 +99,35 @@ object Utils {
     }
 
     fun readJSONFromFile(fileName: String): JSONObject {
-
         val file = File(s + fileName)
-
         val uri = file.toURI()
         var tokener: JSONTokener? = null
         try {
             tokener = JSONTokener(uri.toURL().openStream())
         } catch (e: IOException) {
-            Message.sendDM(Client.client!!.applicationOwner, e.toString())
-            e.printStackTrace()
+           Message.throwError(e)
         }
-
         return if (tokener != null) {
             JSONObject(tokener)
         } else {
             throw NullPointerException()
+        }
+    }
+    fun writeJSONToFile(fileName: String, json : JSONObject){
+        val file = File(s + fileName)
+        if (!file.exists()) {
+            try {
+                file.createNewFile()
+            } catch (e: IOException) {
+                Message.throwError(e)
+            }
+        }
+        try {
+            FileWriter(s + fileName).use { fileWriter ->
+                fileWriter.write(json.toString())
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
     }
     fun getUserFromInput(message : IMessage, input : Any) : IUser?{
