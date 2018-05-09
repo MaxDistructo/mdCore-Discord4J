@@ -37,8 +37,8 @@ object Utils {
     
     /**
     *   Converts the input to a Long value. Returns null if the convert fails.
-    *
-    *
+    *   @param o The object to try and convert to Long
+    *   @return The long value of the input or null if it is unable to be converted
     */
 
     fun convertToLong(o: Any): Long? {
@@ -50,10 +50,22 @@ object Utils {
         }
     }
 
+    /**
+    *   Converts the input to an Int value. Returns null if the convert fails or is impossible.
+    *   @param in The object to convert
+    *   @return The converted object or null
+    */
+    
     fun convertToInt(`in`: Any): Int {
         return Integer.valueOf(`in`.toString())
     }
-
+    
+    /**
+    *   Converts the inputed @org.json.JSONArray to an Array of Strings 
+    *   @param array The JSON array to convert to String
+    *   @return The string array or null if the convert is impossible or fails
+    */
+    
     fun toStringArray(array: JSONArray?): Array<String?>? {
         if (array == null)
             return null
@@ -64,7 +76,13 @@ object Utils {
         }
         return arr
     }
-
+    
+    /**
+    *   Gets the mentioned channel from the IMessage
+    *   @param message The message 
+    *   @return The mentioned channel or null if impossible
+    */
+    
     fun getMentionedChannel(message: IMessage): IChannel? {
 
         val mentionedChannelList = message.channelMentions
@@ -75,6 +93,12 @@ object Utils {
             null
         }
     }
+    
+    /**
+    *   Gets the mentioned user from the IMessage
+    *   @param message The message 
+    *   @return The mentioned user or null if impossible
+    */
 
     fun getMentionedUser(message: IMessage): IUser? {
         val mentionedList = message.mentions
@@ -87,18 +111,37 @@ object Utils {
         }
         return mentioned
     }
+    
+    /**
+    *   Gets the attachment from the IMessage
+    *   @param message The message 
+    *   @return The attachment or null if impossible
+    */
 
     fun getAttachement(message: IMessage): IMessage.Attachment? {
         var attachments: List<IMessage.Attachment>? = null
         attachments = message.attachments
         return attachments!![0]
     }
+    
+    /**
+    *   Gets the url for the attachment
+    *   @param message The message 
+    *   @return The url for the attachement or null if impossible
+    */
 
     fun getAttachementUrl(message: IMessage): String {
         var attachments: List<IMessage.Attachment>? = null
         attachments = message.attachments
         return attachments!![0].url
     }
+    
+    /**
+    *   Similar to #makeNewString but puts new lines between the values instead of spaces
+    *   @param input The array to convert
+    *   @param startAt The spot in the array to start reading at
+    *   @return The String with new lines
+    */
 
     fun makeNewLineString(input: Array<String?>, startAt: Int): String {
         val stringBuilder = StringBuilder()
@@ -110,6 +153,12 @@ object Utils {
         }
         return stringBuilder.toString()
     }
+    
+    /**
+    *   Reads the JSON from the specified file
+    *   @param fileName The path to the file in relation to the location of the running directory
+    *   @return The JSON object from the file.
+    */
 
     fun readJSONFromFile(fileName: String): JSONObject {
 
@@ -130,6 +179,14 @@ object Utils {
             throw NullPointerException()
         }
     }
+    
+    /**
+    *   Attempts to get a user from the input if a mentioned user is not found. This is accomplished by comparing the input to the Debug ID of a user, the actual Account name of the User, and finally checking if it is a fragment of the name of the user.
+    *   @param message The message 
+    *   @param input The name/longID/namefragement for the user
+    *   @return The user that was mentioned or matches one of the characteristics
+    */
+    
     fun getUserFromInput(message : IMessage, input : Any) : IUser?{
         when {
             getMentionedUser(message) != null -> return getMentionedUser(message)
@@ -147,6 +204,13 @@ object Utils {
         }
         return null
     }
+    
+    /**
+    *   Similar to the above method but does not have the message requirement and as such can not check as much
+    *   @param input The name/longID of a user
+    *   @return The user
+    */
+    
     fun getUserFromInput(input : Any) : IUser?{
         when {
             convertToLong(input) != null -> return client!!.getUserByID(convertToLong(input)!!)
