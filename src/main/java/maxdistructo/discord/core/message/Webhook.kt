@@ -77,9 +77,8 @@ object Webhook{
    Unirest.post("https://discordapp.com/api/webhooks/" + webhook.longID + "/" + webhook.token).header("content-type", "application/json").body(jsonBuilder(webhook, message)).asJson()
   }
   fun send(webhook : Webhook, message: String){
-    
+    //TODO Write this method
   }
-  
   fun getByName(bot : Bot, channel : IChannel, name : String) : Webhook?{
     var webhookList = listOf<Webhook>()
     val client = bot.client as DiscordClientImpl
@@ -108,7 +107,7 @@ object Webhook{
           println("Reading webhook from File.")
           val json = Utils.readJSONFromFile("/config/tmp/webhook.tmp")
           println("JSON Object Accepted")
-          val webhook = Webhook(bot.client, json.getString("name"), json.getLong("id"), bot.client.getChannelByID(json.getLong("channel_id")), bot.client.getUserByID(json.getJSONObject("user").getLong("id")), json.getString("avatar"), json.getString("token"))
+          val webhook : Webhook = Webhook(bot.client, json.getString("name"), json.getLong("id"), bot.client.getChannelByID(json.getLong("channel_id")), bot.client.getUserByID(json.getJSONObject("user").getLong("id")), json.getString("avatar"), json.getString("token"))
           println("Read webhook")
           File("$s/config/tmp/webhook.tmp").delete()
           println("Deleted webhook file")
