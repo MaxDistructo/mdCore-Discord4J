@@ -23,9 +23,9 @@ import java.io.File
 
 object Webhook{
 
-  fun createWebhook(channel : IChannel, name: String, avatar : String) : String{
+  fun createWebhook(channel : IChannel, name: String, avatar : String) : IWebhook{
     val webhook = channel.createWebhook(name, avatar)
-      return webhook.defaultName
+      return webhook
   }
   fun name(channel : IChannel, name : String, newName : String){
     val webhook = channel.getWebhooksByName(name) [0]
@@ -74,7 +74,7 @@ object Webhook{
   }
   fun send(bot : Bot, channel : IChannel, message : String){
    val webhook = defaultWebhook(bot, channel)
-   Unirest.post(DiscordEndpoints.WEBHOOKS + webhook.longID + "/" + webhook.token).body(jsonBuilder(webhook, message))
+   Unirest.post("https://discordapp.com/api/webhooks/" + webhook.longID + "/" + webhook.token).header("content-type", "application/json").body(jsonBuilder(webhook, message)).asJson()
   }
   fun send(webhook : Webhook, message: String){
     
@@ -84,7 +84,7 @@ object Webhook{
     var webhookList = listOf<Webhook>()
     val client = bot.client as DiscordClientImpl
     val webhooks = RequestBuffer.request {
-        var webhookObjects = client.REQUESTS.GET.makeRequest(
+        val webhookObjects = client.REQUESTS.GET.makeRequest(
                 DiscordEndpoints.CHANNELS + channel.longID + "/webhooks",
                 Array<WebhookObject>::class.java)
         var webhook : Webhook? = null
@@ -97,28 +97,22 @@ object Webhook{
             }
         }
         if(webhook == null){
-            var name2 = createWebhook(channel, "bot", "https://www.shareicon.net/download/128x128//2017/06/21/887435_logo_512x512.png") //Default Webhook name. Icon is Discord Logo
-
+            val name2 = createWebhook(channel, "bot", "https://www.shareicon.net/download/128x128//2017/06/21/887435_logo_512x512.png") //Default Webhook name. Icon is Discord Logo
+            name2.changeDefaultAvatar("https://www.shareicon.net/download/128x128//2017/06/21/887435_logo_512x512.png")
         }
         else {
-            val jsonObject = jsonBuilder(webhook!!, "null")
+            val jsonObject = jsonBuilder(webhook, "null")
             Utils.writeJSONToFile("/config/tmp/webhook.tmp", jsonObject)
         }
     }
-      try {
           println("Reading webhook from File.")
           val json = Utils.readJSONFromFile("/config/tmp/webhook.tmp")
           println("JSON Object Accepted")
-          val webhook = Webhook(bot.client, json.getString("name"), json.getLong("id"), bot.client.getChannelByID(json.getLong("channel_id")), bot.client.getUserByID(json.getJSONObject("user").getLong("id")),json.getString("avatar"), json.getString("token"))
+          val webhook = Webhook(bot.client, json.getString("name"), json.getLong("id"), bot.client.getChannelByID(json.getLong("channel_id")), bot.client.getUserByID(json.getJSONObject("user").getLong("id")), json.getString("avatar"), json.getString("token"))
           println("Read webhook")
           File("$s/config/tmp/webhook.tmp").delete()
           println("Deleted webhook file")
           return webhook
-      }
-      catch (e : Exception){
-
-      }
-      return null
     }
 
   fun defaultWebhook(bot : Bot, channel : IChannel) : Webhook{

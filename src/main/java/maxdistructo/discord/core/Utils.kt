@@ -8,6 +8,7 @@ import java.nio.file.Paths
 import maxdistructo.discord.core.message.Message
 import org.json.*
 import sx.blah.discord.handle.obj.*
+import java.io.FileWriter
 
 object Utils {
     private val currentRelativePath = Paths.get("")
@@ -217,6 +218,31 @@ object Utils {
             client!!.getUsersByName(input.toString()).isNotEmpty() -> return client!!.getUsersByName(input.toString(), true)[0]
         }
         return null
+    }
+
+    /**
+     * Writes the provided JSONObject to file
+     * @param path The relative location to the running directory
+     * @param jsonObject The object to write to File
+     */
+
+    fun writeJSONToFile(path: String, jsonObject: JSONObject) {
+        val file = File(s + path)
+        if (!file.exists()) {
+            try {
+                file.createNewFile()
+            } catch (e: IOException) {
+                Message.throwError(e)
+            }
+        }
+        try {
+            FileWriter(s + path).use { fileWriter ->
+                fileWriter.write(jsonObject.toString())
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
     }
 
 }
