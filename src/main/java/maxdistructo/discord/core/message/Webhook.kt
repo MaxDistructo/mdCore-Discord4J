@@ -74,7 +74,11 @@ object Webhook{
   }
   fun send(bot : Bot, channel : IChannel, message : String){
    val webhook = defaultWebhook(bot, channel)
-   Unirest.post("https://discordapp.com/api/webhooks/" + webhook.longID + "/" + webhook.token).header("content-type", "application/json").body(jsonBuilder(webhook, message)).asJson()
+   Unirest.post("https://discordapp.com/api/webhooks/" + webhook.longID + "/" + webhook.token)
+    .header("Content-Type", "application/json")
+    .header("Accept", "application/json")
+    .body(jsonBuilder(webhook, message).toString())
+    .asJson()
   }
   fun send(webhook : Webhook, message: String){
     //TODO Write this method
