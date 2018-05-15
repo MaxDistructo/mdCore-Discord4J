@@ -62,4 +62,9 @@ class Help : IHelp {
         }
         return sb.toString()
     }
+    
+    constructor(message : IMessage){
+        json = Utils.readJSONFromFile("/config/guild/" + message.guild.longID + "_help.json")
+        basicHelpHolder = 
+    }
 }
