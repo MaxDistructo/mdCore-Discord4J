@@ -8,7 +8,15 @@ object Command{
     val isMod = Perms.checkMod(message, user)
     val help = Help(message.guild)
     
-    
+    if(Perms.checkMod(message)){
+      Message.sendDM(message.author, help.adminHelpString)
+    }
+    else if(Perms.checkMod(message)){
+      Message.sendDM(message.author, help.modHelpString)
+    }
+    else{
+      Message.sendDM(message.author, help.helpString)
+    }
   }
 
 }
