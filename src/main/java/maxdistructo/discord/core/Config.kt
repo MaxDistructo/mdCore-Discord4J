@@ -63,14 +63,11 @@ object Config {
         var tokener: JSONTokener? = null
         try {
             tokener = JSONTokener(uri.toURL().openStream())
-            println("Successfully read file " + guild.longID + ".txt")
         } catch (e: IOException) {
-            Message.sendDM(Client.client!!.applicationOwner, e.toString())
-            e.printStackTrace()
+            Message.throwError(e)
         }
 
         val root = JSONObject(tokener!!)
-        println("Converted JSON file to JSONObject")
         val array = root.getJSONArray("Moderators")
         val longArray = LongArray(array.length())
         println("Created Long Array")
@@ -79,7 +76,6 @@ object Config {
             longArray[i] = array.getLong(i)
             i++
         }
-        println("Converted JSON array to long Array")
         return longArray.toList()
 
     }
@@ -92,14 +88,11 @@ object Config {
         var tokener: JSONTokener? = null
         try {
             tokener = JSONTokener(uri.toURL().openStream())
-            println("Successfully read file " + guild.longID + ".txt")
         } catch (e: IOException) {
-            Message.sendDM(Client.client!!.applicationOwner, e.toString())
-            e.printStackTrace()
+            Message.throwError(e)
         }
 
         val root = JSONObject(tokener!!)
-        println("Converted JSON file to JSONObject")
         val array = root.getJSONArray("Admins")
         val longArray = LongArray(array.length())
         var i = 0
@@ -147,8 +140,7 @@ object Config {
         try {
             tokener = JSONTokener(uri.toURL().openStream())
         } catch (e: IOException) {
-            Message.sendDM(Client.client!!.applicationOwner, e.toString())
-            e.printStackTrace()
+            Message.throwError(e)
         }
 
         return JSONObject(tokener!!)
@@ -164,8 +156,7 @@ object Config {
         try {
             lines = Files.readAllLines(Paths.get(file.toURI()))
         } catch (e: Exception) {
-            Message.sendDM(Client.client!!.applicationOwner, e.localizedMessage)
-            e.printStackTrace()
+            Message.throwError(e)
         }
 
         return lines
