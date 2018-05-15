@@ -9,7 +9,7 @@ import sx.blah.discord.api.IDiscordClient
 class Bot (token : String): IBot {
     private val privToken : String = token
     private var privHelp = Help()
-    private val privClient = ClientBuilder().withToken(token).withRecommendedShardCount().login()
+    private val privClient = Client.createClient(token)
 
     override val token: String
         get() = privToken
