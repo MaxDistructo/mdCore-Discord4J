@@ -1,6 +1,9 @@
 package maxdistructo.discord.core.impl
 
+import maxdistructo.discord.core.Utils
 import maxdistructo.discord.core.obj.IHelp
+import sx.blah.discord.handle.obj.IGuild
+import sx.blah.discord.handle.obj.IMessage
 
 class Help : IHelp {
 
@@ -64,13 +67,13 @@ class Help : IHelp {
     }
     
     constructor(message : IMessage){
-        json = Utils.readJSONFromFile("/config/guild/" + message.guild.longID + "_help.json")
+        val json = Utils.readJSONFromFile("/config/guild/" + message.guild.longID + "_help.json")
         basicHelpHolder = Utils.toStringArray(json.getJSONArray("basic_help"))!! as MutableList<String>
         adminHelpHolder = Utils.toStringArray(json.getJSONArray("admin_help"))!! as MutableList<String>
         modHelpHolder = Utils.toStringArray(json.getJSONArray("mod_help"))!! as MutableList<String>
     }
     constructor(guild : IGuild){
-        json = Utils.readJSONFromFile("/config/guild/" + guild.longID + "_help.json")
+        val json = Utils.readJSONFromFile("/config/guild/" + guild.longID + "_help.json")
         basicHelpHolder = Utils.toStringArray(json.getJSONArray("basic_help"))!! as MutableList<String>
         adminHelpHolder = Utils.toStringArray(json.getJSONArray("admin_help"))!! as MutableList<String>
         modHelpHolder = Utils.toStringArray(json.getJSONArray("mod_help"))!! as MutableList<String>

@@ -1,5 +1,9 @@
 package maxdistructo.discord.core.priv
 
+import sx.blah.discord.api.ClientBuilder
+import sx.blah.discord.api.IDiscordClient
+import sx.blah.discord.util.DiscordException
+
 object Client{
   fun createClient(token : String) : IDiscordClient?{
         lateinit var client : IDiscordClient

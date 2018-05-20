@@ -228,13 +228,12 @@ object Utils {
 
     fun writeJSONToFile(path: String, jsonObject: JSONObject) {
         val file = File(s + path)
-        if (!file.exists()) {
             try {
                 file.createNewFile()
             } catch (e: IOException) {
                 Message.throwError(e)
             }
-        }
+
         try {
             FileWriter(s + path).use { fileWriter ->
                 fileWriter.write(jsonObject.toString())
@@ -244,5 +243,6 @@ object Utils {
         }
 
     }
+
 
 }
