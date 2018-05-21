@@ -73,7 +73,7 @@ object Webhook{
   fun send(webhook : Webhook, message: String){
     //TODO Write this method
   }
-  fun getByName(bot : Bot, channel : IChannel, name : String) : Webhook?{
+  fun getByName(bot : Bot, channel : IChannel, name : String) : Webhook{
     var webhookList = listOf<Webhook>()
     val client = bot.client as DiscordClientImpl
          val webhooks = RequestBuffer.request {
@@ -104,7 +104,12 @@ object Webhook{
               break
           }
       }
+    if(webhook == null){
+      return getByName(bot, channel, name)
+    }
+    else{
       return webhook
+    }
     }
 
   fun defaultWebhook(bot : Bot, channel : IChannel) : Webhook{
