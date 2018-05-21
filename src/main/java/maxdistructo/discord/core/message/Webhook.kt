@@ -104,7 +104,13 @@ object Webhook{
               break
           }
       }
-      return webhook
+      if(webhook == null){
+          return getByName(bot, channel, name)
+      }
+      else{
+          return webhook
+      }
+
     }
 
   fun defaultWebhook(bot : Bot, channel : IChannel) : Webhook{
