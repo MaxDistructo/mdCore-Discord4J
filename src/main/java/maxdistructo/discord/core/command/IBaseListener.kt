@@ -31,9 +31,8 @@ interface IBaseListener {
     var modCommands : List<BaseCommand>
     val name : String
 
-    var commandRegistries : LinkedList<ICommandRegistry>
-
-    fun addCommandRegistry(registry: ICommandRegistry)
+    var commandRegistry : LinkedList<ICommand>
+    fun addCommand(command : ICommand)
     fun createCommands()
 
 }

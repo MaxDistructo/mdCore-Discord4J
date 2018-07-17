@@ -1,7 +1,6 @@
 package maxdistructo.discord.core.impl
 
 import maxdistructo.discord.core.command.IBaseListener
-import maxdistructo.discord.core.command.ICommandRegistry
 import maxdistructo.discord.core.obj.IBot
 import maxdistructo.discord.core.priv.Client
 import org.slf4j.Logger
@@ -22,9 +21,6 @@ class Bot (token : String): IBot {
     override val logger: Logger
         get() = LoggerFactory.getLogger(client.applicationName)
 
-    /**
-     * @requirement Must be ran after adding all listeners
-     */
     override fun registerListeners() {
         for(listener in listeners){
             listener.createCommands() //Must add commands to listener which grabs commands from ICommandRegistry and registers them to itself.
@@ -33,9 +29,6 @@ class Bot (token : String): IBot {
         }
     }
 
-    /**
-     * @requirement Must be ran after registering all #link ICommandRegistry to it
-     */
     override fun addListener(listener: IBaseListener) {
         listeners += listener
     }

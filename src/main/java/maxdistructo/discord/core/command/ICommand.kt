@@ -8,7 +8,10 @@ interface ICommand{
     }
     val requiresMod : Boolean
     val requiresAdmin : Boolean
+    val requiresGuildOwner : Boolean
+    val requiresOwner : Boolean
     val commandName : String
     val helpMessage : String
     val hasOutput : Boolean
+    val commandType : Enum<ICommandType>
 }

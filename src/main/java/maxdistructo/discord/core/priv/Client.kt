@@ -4,7 +4,7 @@ import sx.blah.discord.api.ClientBuilder
 import sx.blah.discord.api.IDiscordClient
 import sx.blah.discord.util.DiscordException
 
-object Client{
+internal object Client{
   fun createClient(token : String) : IDiscordClient?{
         lateinit var client : IDiscordClient
         val clientBuilder = ClientBuilder() // Creates the ClientBuilder instance
