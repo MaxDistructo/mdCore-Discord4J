@@ -6,6 +6,12 @@ import sx.blah.discord.util.RoleBuilder
 
 import java.awt.*
 
+/**
+ * @object Roles
+ * @description This class contains methods to get and modify discord roles.
+ * @author MaxDistructo
+ */
+
 object Roles {
     fun getRole(message: IMessage, role: String): IRole? {
         val roles = message.guild.getRolesByName(role)
@@ -138,8 +144,6 @@ object Roles {
             "voiceUseVad" -> set.add(Permissions.VOICE_USE_VAD)
         }
         roleNew.changePermissions(set)
-
-
     }
 
     fun changeColor(role: IRole, color: String) {

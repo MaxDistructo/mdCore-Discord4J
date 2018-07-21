@@ -6,7 +6,13 @@ import sx.blah.discord.util.PermissionUtils
 
 import maxdistructo.discord.core.Client.client
 
-object Perms {
+/**
+ * @object Perms
+ * @description This class uses the local config files to determine if someone is an Admin or Moderator of the server/guild.
+ * @author MaxDistructo
+ */
+
+object Perms{
     fun checkMod(message: IMessage): Boolean {
         val author = message.author
         //Checks if user is a Moderator of the server

@@ -5,6 +5,12 @@ import org.slf4j.Logger
 import sx.blah.discord.api.IDiscordClient
 import java.util.*
 
+/**
+ * @interface IBot
+ * @description Simple Discord Bot that implements my Listener and Command systems. May be implemented using your own features.
+ * @author MaxDistructo
+ */
+
 interface IBot {
 
     val token : String

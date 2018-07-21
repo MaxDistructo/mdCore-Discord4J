@@ -8,6 +8,12 @@ The only modification of this code was a convert to Kotlin.
 WARNING: This is UNTESTED and HIGHLY EXPERIMENTAL CODE!
 */
 
+/**
+ * @object Webhook
+ * @description Contains methods to send webhook messages to Discord. This may break with any update of Discord4J cause of how it is programmed.
+ * @author MaxDistructo
+ */
+
 import com.mashape.unirest.http.Unirest
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.runBlocking

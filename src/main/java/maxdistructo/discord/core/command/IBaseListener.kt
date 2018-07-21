@@ -4,6 +4,12 @@ import sx.blah.discord.api.events.EventSubscriber
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent
 import java.util.*
 
+/**
+ * @interface IBaseListener
+ * @description A simple listener that is able to be registered into an IDiscordClient and has support for my command system
+ * @author MaxDistructo
+ */
+
 interface IBaseListener {
     fun registerCommand(vararg commands : BaseCommand){
         for(command in commands) {

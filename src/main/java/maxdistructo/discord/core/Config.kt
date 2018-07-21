@@ -10,6 +10,12 @@ import java.io.IOException
 import java.nio.file.Files
 import java.nio.file.Paths
 
+/**
+ * @object Config
+ * @description This class contains methods for getting and writing values to the local config files.
+ * @author MaxDistructo
+ */
+
 object Config {
 
     @Deprecated("", ReplaceWith("Integer.valueOf(`in`.toString())")) //Use Utils.convertToInt instead. Method still exists for legacy support *WILL BE REMOVED IN v1.10 SO STOP USING THIS*
